@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.AboutViewControl"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutViewControl">
+   <children>
+      <Button layoutX="556.0" layoutY="413.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.0" text="Back" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="81.0" text="Official product by DTgames">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="108.0" text="Game developers are Dor S. and Tair S.">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="148.0" text="The Algorithm that been chose to develop and generate the mazes is Prim Algorithm">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="178.0" text="The Algorithm that been chose to solve the mazes are DFS, BFS, BestFS">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/Images/AboutI.jpg" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

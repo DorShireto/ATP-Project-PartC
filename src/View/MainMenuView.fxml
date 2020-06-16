@@ -14,7 +14,7 @@
       <Button id="aboutB" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="About" />
       <AnchorPane layoutX="389.0" layoutY="64.0" prefHeight="112.0" prefWidth="112.0">
          <children>
-            <Button id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="New Game" />
+            <Button id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="New Game" visible="false" />
             <Button id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Load Game" />
          </children>
       </AnchorPane>
