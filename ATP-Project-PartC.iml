@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/ATP-Project-PartB.jar!/" />
+          <root url="jar://$MODULE_DIR$/ATPProjectJAR.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

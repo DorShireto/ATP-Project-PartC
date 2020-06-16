@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuViewControl">
+   <children>
+      <Button id="loginB" layoutX="74.0" layoutY="102.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Login" />
+      <Button id="playB" layoutX="534.0" layoutY="102.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Play" />
+      <Button id="settingsB" layoutX="534.0" layoutY="163.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Settings" />
+      <Button id="helpB" layoutX="534.0" layoutY="223.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Help" />
+      <Button id="exitB" layoutX="534.0" layoutY="342.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Exit" />
+      <Button id="aboutB" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="About" />
+      <AnchorPane layoutX="389.0" layoutY="64.0" prefHeight="112.0" prefWidth="112.0">
+         <children>
+            <Button id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="New Game" />
+            <Button id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Load Game" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="296.0" layoutY="429.0" text="Dor S. and Tair S.  ©" />
+      <Label alignment="CENTER" layoutX="286.0" layoutY="26.0" prefHeight="28.0" prefWidth="128.0" text="Welcom">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
