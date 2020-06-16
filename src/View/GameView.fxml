@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameViewControl">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" layoutY="-1.0" prefHeight="482.0" prefWidth="738.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button layoutX="62.0" layoutY="360.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Back">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
+                  <Button layoutX="62.0" layoutY="180.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Generate">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="62.0" layoutY="240.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Solve Maze">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="62.0" layoutY="300.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Save Maze">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <TextField alignment="CENTER" layoutX="35.0" layoutY="116.0" prefHeight="43.0" prefWidth="55.0" text="Rows" />
+                  <TextField alignment="CENTER" layoutX="120.0" layoutY="116.0" prefHeight="43.0" prefWidth="55.0" text="Cols" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="176.0" prefWidth="189.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

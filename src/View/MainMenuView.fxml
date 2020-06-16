@@ -15,7 +15,7 @@
       <AnchorPane layoutX="389.0" layoutY="64.0" prefHeight="112.0" prefWidth="112.0">
          <children>
             <Button id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="New Game" visible="false" />
-            <Button id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Load Game" />
+            <Button id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Load Game" visible="false" />
          </children>
       </AnchorPane>
       <Label layoutX="296.0" layoutY="429.0" text="Dor S. and Tair S.  ©" />
