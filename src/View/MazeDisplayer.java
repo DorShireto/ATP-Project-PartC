@@ -3,6 +3,7 @@ package View;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
+import javafx.beans.property.StringProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.Socket;
 
 public class MazeDisplayer extends Canvas {
 
@@ -47,7 +49,7 @@ public class MazeDisplayer extends Canvas {
             cellHeight = canvasHeight/arrMaze.length;
             cellWidth = canvasWidth/arrMaze[0].length;
 
-            try{
+            //try{
                 Image boardBG = new Image("/Images/boardBG.jpeg");
                 Image wall = new Image("/Images/flowerWall.jpeg");
                 Image characterImage = new Image("/Images/MulanI.png");
@@ -71,15 +73,15 @@ public class MazeDisplayer extends Canvas {
                 //Draw trophy at goal position
                 gc.drawImage(trophy, maze.getGoalPosition().getColumnIndex() * cellWidth, maze.getGoalPosition().getRowIndex() * cellHeight, cellWidth, cellHeight);
                 //Draw character
-                gc.drawImage(characterImage, characterPositionColumn * cellWidth, characterPositionRow * cellHeight, cellWidth, cellHeight);
+                //gc.drawImage(characterImage, characterPositionColumn * cellWidth, characterPositionRow * cellHeight, cellWidth, cellHeight);
 
 
 
 
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            //}
+            //catch (FileNotFoundException e) {
+               // e.printStackTrace();
+            //}
         }
     }
 
@@ -108,5 +110,9 @@ public class MazeDisplayer extends Canvas {
 
 
     public void setCharecterPos(int x, int y) {
+    }
+
+
+    public StringProperty imageFileNameCharacterProperty() {
     }
 }

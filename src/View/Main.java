@@ -8,6 +8,18 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static void showAlert() {
+
+    }
+
+    public static void WinningView() {
+
+    }
+
+    public static void showMainScreen() {
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
