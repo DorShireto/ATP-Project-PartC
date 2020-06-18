@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutViewControl">
    <children>
-      <Button layoutX="556.0" layoutY="413.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.0" text="Back" />
+      <Button fx:id="backB" layoutX="556.0" layoutY="413.0" mnemonicParsing="false" onAction="#backC" prefHeight="32.0" prefWidth="96.0" text="Back" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="81.0" text="Official product by DTgames">
          <font>
             <Font name="System Bold" size="14.0" />

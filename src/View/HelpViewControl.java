@@ -2,8 +2,8 @@ package View;
 
 import javafx.event.ActionEvent;
 
-public class AboutViewControl {
-    public void backC(ActionEvent actionEvent) {
+public class HelpViewControl {
+    public void backClieck(ActionEvent actionEvent) {
         Main.backFromAbout();
     }
 }

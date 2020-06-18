@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="484.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.HelpViewControl">
+   <children>
+      <ImageView fx:id="numPadP" fitHeight="326.0" fitWidth="304.0" layoutX="518.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/Images/NUMPAD.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="32.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Possible moves:" underline="true" wrappingWidth="171.13671875">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You character will be able to move around the maze by " />
+      <Text layoutX="32.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pressing on different keys on your personal keyboards napad" />
+      <Text layoutX="32.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic movment:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Up: by pressing on number 8" />
+      <Text layoutX="32.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Down: by pressing on number 2" />
+      <Text layoutX="32.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right: by pressing on number 6" />
+      <Text layoutX="32.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left: by pressing on number 4" />
+      <Text layoutX="32.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please notice! the character will move only if not " />
+      <Text layoutX="32.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="blocked by a wall in the movement direction" />
+      <Text layoutX="229.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagonal movment:" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="229.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right and up diagonal: by presiing on number 9" />
+      <Text layoutX="229.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right and Down diagonal: by presiing on number 3" />
+      <Text layoutX="229.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left and Up diagonal: by presiing on number 7" />
+      <Text layoutX="229.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left and Down diagonal: by presiing on number 1" />
+      <Button fx:id="backB" layoutX="672.0" layoutY="420.0" mnemonicParsing="false" onAction="#backClieck" prefHeight="36.0" prefWidth="92.0" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

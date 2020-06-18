@@ -4,18 +4,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuViewControl">
+<AnchorPane fx:id="mainWin" prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuViewControl">
    <children>
-      <Button id="loginB" layoutX="74.0" layoutY="102.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Login" />
-      <Button id="playB" layoutX="534.0" layoutY="102.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Play" />
-      <Button id="settingsB" layoutX="534.0" layoutY="163.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Settings" />
-      <Button id="helpB" layoutX="534.0" layoutY="223.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Help" />
-      <Button id="exitB" layoutX="534.0" layoutY="342.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Exit" />
-      <Button id="aboutB" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="About" />
-      <AnchorPane layoutX="389.0" layoutY="64.0" prefHeight="112.0" prefWidth="112.0">
+      <Button id="loginB" fx:id="loginB" layoutX="74.0" layoutY="102.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Login" />
+      <Button id="playB" fx:id="playB" layoutX="534.0" layoutY="102.0" mnemonicParsing="false" onAction="#playButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Play" />
+      <Button id="settingsB" fx:id="settingB" layoutX="534.0" layoutY="163.0" mnemonicParsing="false" onAction="#settingButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Settings" />
+      <Button id="helpB" fx:id="helpB" layoutX="534.0" layoutY="223.0" mnemonicParsing="false" onAction="#helpButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Help" />
+      <Button id="exitB" fx:id="exitB" layoutX="534.0" layoutY="342.0" mnemonicParsing="false" onAction="#exitButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Exit" />
+      <Button id="aboutB" fx:id="aboutB" layoutX="534.0" layoutY="282.0" mnemonicParsing="false" onAction="#aboutButtonClicked" prefHeight="36.0" prefWidth="92.0" text="About" />
+      <AnchorPane fx:id="newLoadP" layoutX="389.0" layoutY="64.0" prefHeight="112.0" prefWidth="112.0">
          <children>
-            <Button id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="New Game" visible="false" />
-            <Button id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Load Game" visible="false" />
+            <Button id="newGameB" fx:id="newGameB" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#newGameButtonClicked" prefHeight="36.0" prefWidth="92.0" text="New Game" visible="false" />
+            <Button id="loadGameB" fx:id="loadGameB" layoutX="10.0" layoutY="62.0" mnemonicParsing="false" onAction="#loadGameButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Load Game" visible="false" />
          </children>
       </AnchorPane>
       <Label layoutX="296.0" layoutY="429.0" text="Dor S. and Tair S.  ©" />

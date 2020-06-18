@@ -2,7 +2,9 @@ package View;
 
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+import algorithms.search.MazeState;
 import algorithms.search.Solution;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,16 +19,53 @@ public class MazeDisplayer extends Canvas {
 
     public Maze maze;
     //private Maze maze;
+
     private Solution solution;
     private Position startPosition;
     private Position goalPosition;
     private int [][] arrMaze;
+    private int charRowIndex,charColIndex;//TODO: might need to be init
+
+    // Texture prop
+    private StringProperty wall,backGround, characterImage;
+
+    // Cells props
+    double canvasHeight,canvasWidth,cellHeight,cellWidth;
 
 
 
     public MazeDisplayer(){
+        wall = new SimpleStringProperty();
+        backGround = new SimpleStringProperty();
+        characterImage = new SimpleStringProperty();
+        canvasHeight = getHeight();
+        canvasWidth = getWidth();
+        cellHeight = canvasHeight/arrMaze.length;
+        cellWidth = canvasWidth/arrMaze[0].length;
+
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
+    }
+
+    // General properties
+    @Override
+    public boolean isResizable() {
+        return true;
+    }
+    @Override
+    public void resize(double width, double height)
+    {
+        super.setWidth(width);
+        super.setHeight(height);
+        draw();
+    }
+    @Override
+    public double prefWidth(double height) {
+        return getWidth();
+    }
+    @Override
+    public double prefHeight(double width) {
+        return getHeight();
     }
     public boolean setMaze(Maze maze)
     {
@@ -38,21 +77,16 @@ public class MazeDisplayer extends Canvas {
         }
         return false;
     }
-
     public void draw()
     {
         if(maze!=null)
         {
-            double canvasHeight,canvasWidth,cellHeight,cellWidth;
-            canvasHeight = getHeight();
-            canvasWidth = getWidth();
-            cellHeight = canvasHeight/arrMaze.length;
-            cellWidth = canvasWidth/arrMaze[0].length;
 
-            //try{
-                Image boardBG = new Image("/Images/boardBG.jpeg");
-                Image wall = new Image("/Images/flowerWall.jpeg");
-                Image characterImage = new Image("/Images/MulanI.png");
+
+            try{
+                Image boardBG = new Image(new FileInputStream(this.backGround.get()));
+                Image wall = new Image(new FileInputStream(this.wall.get()));
+                Image characterImage = new Image(characterImageProperty().get());
                 Image trophy = new Image("/Images/trophy.png");
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
@@ -73,46 +107,46 @@ public class MazeDisplayer extends Canvas {
                 //Draw trophy at goal position
                 gc.drawImage(trophy, maze.getGoalPosition().getColumnIndex() * cellWidth, maze.getGoalPosition().getRowIndex() * cellHeight, cellWidth, cellHeight);
                 //Draw character
-                //gc.drawImage(characterImage, characterPositionColumn * cellWidth, characterPositionRow * cellHeight, cellWidth, cellHeight);
-
-
-
-
-            //}
-            //catch (FileNotFoundException e) {
+                gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+            }
+            catch (FileNotFoundException e) {
                // e.printStackTrace();
-            //}
+            }
         }
     }
-
-
-
-
-
-
-
-
-
-    // General properties
-    @Override
-    public boolean isResizable() {
-        return true;
+    public void setSolution(Solution solution) {
+        if(solution!=null)
+        {
+            this.solution = solution;
+            printSolution();
+        }
     }
-    @Override
-    public double prefWidth(double height) {
-        return getWidth();
+    private void printSolution() {
+        Image characterImage = new Image(characterImageProperty().get());
+        Image trophy = new Image("/Images/trophy.png");
+        GraphicsContext graphicsContext = getGraphicsContext2D();
+        int pathSize = solution.getSolutionPath().size();
+        for(int index = 0; index > pathSize; index++)
+        {
+            int rowIndex,colIndex;
+            rowIndex = ((MazeState)solution.getSolutionPath().get(index)).getMyState().getRowIndex();
+            colIndex = ((MazeState)solution.getSolutionPath().get(index)).getMyState().getColumnIndex();
+            if(index != pathSize-1)
+            {// charcarter not in the final position
+                graphicsContext.drawImage(characterImage,rowIndex*cellWidth,colIndex*cellHeight,cellWidth,cellWidth);
+            }
+            else{ //Character at final position,
+                graphicsContext.drawImage(trophy,rowIndex*cellWidth,colIndex*cellHeight,cellWidth,cellWidth);
+            }
+        }
     }
-
-    @Override
-    public double prefHeight(double width) {
-        return getHeight();
-    }
-
-
     public void setCharecterPos(int x, int y) {
+        this.charRowIndex = x;
+        this.charColIndex = y;
+    }
+    public StringProperty characterImageProperty() {
+        return characterImage;
     }
 
 
-    public StringProperty imageFileNameCharacterProperty() {
-    }
 }
