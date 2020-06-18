@@ -27,7 +27,9 @@ public class MazeDisplayer extends Canvas {
     private int charRowIndex,charColIndex;//TODO: might need to be init
 
     // Texture prop
-    private StringProperty wall,backGround, characterImage;
+    private StringProperty wall = new SimpleStringProperty();;
+    private StringProperty backGround = new SimpleStringProperty();;
+    private StringProperty characterImage = new SimpleStringProperty();;
 
     // Cells props
     double canvasHeight,canvasWidth,cellHeight,cellWidth;
@@ -38,10 +40,6 @@ public class MazeDisplayer extends Canvas {
         wall = new SimpleStringProperty();
         backGround = new SimpleStringProperty();
         characterImage = new SimpleStringProperty();
-        canvasHeight = getHeight();
-        canvasWidth = getWidth();
-        cellHeight = canvasHeight/arrMaze.length;
-        cellWidth = canvasWidth/arrMaze[0].length;
 
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
@@ -81,7 +79,10 @@ public class MazeDisplayer extends Canvas {
     {
         if(maze!=null)
         {
-
+            canvasHeight = getHeight();
+            canvasWidth = getWidth();
+            cellHeight = canvasHeight/arrMaze.length;
+            cellWidth = canvasWidth/arrMaze[0].length;
 
             try{
                 Image boardBG = new Image(new FileInputStream(this.backGround.get()));
@@ -122,6 +123,10 @@ public class MazeDisplayer extends Canvas {
         }
     }
     private void printSolution() {
+        canvasHeight = getHeight();
+        canvasWidth = getWidth();
+        cellHeight = canvasHeight/arrMaze.length;
+        cellWidth = canvasWidth/arrMaze[0].length;
         Image characterImage = new Image(characterImageProperty().get());
         Image trophy = new Image("/Images/trophy.png");
         GraphicsContext graphicsContext = getGraphicsContext2D();

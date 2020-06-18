@@ -4,15 +4,19 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 public class MainMenuViewControl {
     @FXML
     private AnchorPane newLoadP;
     @FXML
-    private Button loginB,playB,settingB;
+    private Label userName;
 
-    public void loginButtonClicked(ActionEvent actionEvent) {
+
+    public void setUser(String Name){
+        this.userName.setStyle("-fx-alignment: center");
+        this.userName.setText(Name);
     }
 
     public void playButtonClicked(ActionEvent actionEvent) {

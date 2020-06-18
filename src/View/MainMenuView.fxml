@@ -6,7 +6,6 @@
 
 <AnchorPane fx:id="mainWin" prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuViewControl">
    <children>
-      <Button id="loginB" fx:id="loginB" layoutX="74.0" layoutY="102.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Login" />
       <Button id="playB" fx:id="playB" layoutX="534.0" layoutY="102.0" mnemonicParsing="false" onAction="#playButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Play" />
       <Button id="settingsB" fx:id="settingB" layoutX="534.0" layoutY="163.0" mnemonicParsing="false" onAction="#settingButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Settings" />
       <Button id="helpB" fx:id="helpB" layoutX="534.0" layoutY="223.0" mnemonicParsing="false" onAction="#helpButtonClicked" prefHeight="36.0" prefWidth="92.0" text="Help" />
@@ -20,6 +19,11 @@
       </AnchorPane>
       <Label layoutX="296.0" layoutY="429.0" text="Dor S. and Tair S.  ©" />
       <Label alignment="CENTER" layoutX="286.0" layoutY="26.0" prefHeight="28.0" prefWidth="128.0" text="Welcom">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="userName" alignment="CENTER" layoutX="286.0" layoutY="91.0" prefHeight="28.0" prefWidth="128.0" text="username">
          <font>
             <Font size="24.0" />
          </font>
