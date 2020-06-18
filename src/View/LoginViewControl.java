@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
+
 
 public class LoginViewControl {
     @FXML
@@ -18,7 +20,7 @@ public class LoginViewControl {
         System.exit(0);
     }
 
-    public void startButtonClicked(ActionEvent actionEvent) {
+    public void startButtonClicked(ActionEvent actionEvent) throws IOException {
         String userName = userID.getText();
         Main.loingDone(userName);
 

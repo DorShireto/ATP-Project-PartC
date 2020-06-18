@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sun.audio.AudioPlayer;
 
+import java.io.IOException;
+
 public class Main extends Application {
     public static MyViewModel viewModel;
     public static MyModel model;
@@ -73,12 +75,6 @@ public class Main extends Application {
 
         mainMenuStage.setScene(loginScene);
         mainMenuStage.show();
-        // Loading first properties for the game
-        FXMLLoader optionsTMP = new FXMLLoader(getClass().getResource("../View/OptionView.fxml"));
-        optionsTMP.load();
-        OptionsViewControl optionsControl = optionsTMP.getController();
-        optionsControl.init(viewModel);
-        optionsControl.initBasicProp();
 
     }
 
@@ -120,9 +116,15 @@ public class Main extends Application {
     public static void load() {
     }
 
-    public static void loingDone(String userName) {
+    public static void loingDone(String userName) throws IOException {
         menuControl.setUser(userName);
         mainMenuStage.setScene(mainMenuScene);
+        // Loading first properties for the game f
+        FXMLLoader optionsTMP = new FXMLLoader(Main.class.getResource("../View/OptionView.fxml"));
+        optionsTMP.load();
+        OptionsViewControl optionsControl = optionsTMP.getController();
+        optionsControl.init(viewModel);
+        optionsControl.initBasicProp();
 
 
 
