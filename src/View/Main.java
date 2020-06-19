@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sun.audio.AudioPlayer;
@@ -26,15 +27,11 @@ public class Main extends Application {
     public static MazeCharacter character;
     public static MainMenuViewControl menuControl;
     public static MediaPlayer player;
-    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene;
+    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,gameScene,alertScene,winningScene,loginScene;
     public Parent aboutFXML,alertFXML,helpFXML,loginFXML,mainMenuFXML,gameFXML,optionFXML,winningFXML;
-    public Scene alertScene;
-    public Scene loginScene;
-    public Scene gameScene;
-    public Scene winningScene;
-    public static Stage mainMenuStage,alertStage,gameStage;
-    public Stage winningStage;
-    public static MediaPlayer generalMusic;
+    public static Stage mainMenuStage,alertStage,gameStage,winningStage;
+    public static MediaPlayer generalMusic,gameMusic;
+    public static FXMLLoader gameFxmlLoader;
 
 
 
@@ -57,6 +54,7 @@ public class Main extends Application {
         gameFXML = FXMLLoader.load(getClass().getResource("../View/MyView.fxml"));
         optionFXML= FXMLLoader.load(getClass().getResource("../View/OptionView.fxml"));
         winningFXML = FXMLLoader.load(getClass().getResource("../View/WinningView.fxml"));
+        gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
 
         //Loading scenes
         aboutScene = new Scene(aboutFXML,800,600);
@@ -81,7 +79,7 @@ public class Main extends Application {
 
         //start music
         //File musicPath = new File("Resources/Music/menusMusic.mp3");
-       // generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
+        //generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
         //generalMusic.play();
 
 
@@ -129,7 +127,36 @@ public class Main extends Application {
 
 
 
-    public static void play() {
+    public static void play() throws IOException {
+        //loading game stage and scene
+        gameStage = new Stage();
+        gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        gameStage.setScene(gameScene);
+        gameFxmlLoader.load();
+        MyViewController myViewController = gameFxmlLoader.getController();
+        myViewController.init(viewModel,gameScene,gameStage);
+        viewModel.addObserver(myViewController);
+
+        //loading alert stage and scene
+       // alertStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        alertStage = new Stage();
+        alertStage.setScene(alertScene);
+        alertStage.initModality(Modality.WINDOW_MODAL);
+
+        //loading winning stage and scene
+        //winningStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        winningStage = new Stage();
+        winningStage.setScene(winningScene);
+        winningStage.initModality(Modality.WINDOW_MODAL);
+
+        //loading game music
+        File gameMusicFile = new File("Resources/Music/gameMusic.mp3");
+        gameMusic = new MediaPlayer(new Media(gameMusicFile.toURI().toString()));
+        mainMenuStage.hide();
+        gameStage.show();
+        //generalMusic.stop();
+        //gameMusic.play();
+
     }
 
     public static void load() {

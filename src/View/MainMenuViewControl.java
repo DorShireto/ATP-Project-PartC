@@ -54,7 +54,7 @@ public class MainMenuViewControl {
         newLoadP.setVisible(false);
     }
 
-    public void newGameButtonClicked(ActionEvent actionEvent) {
+    public void newGameButtonClicked(ActionEvent actionEvent) throws IOException {
         Main.play();
     }
 

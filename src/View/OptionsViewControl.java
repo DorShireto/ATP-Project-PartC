@@ -14,54 +14,62 @@ public class OptionsViewControl {
     private Button DFS,BFS,BestFS,simpleM,myM,emptyM,backB;
     @FXML
     private ChoiceBox charPicker;
+    private String solvingAlgorithm = null;
+    private String generateAlgorithm = null;
 
     public void init(MyViewModel myViewModel)
     {
-        if (myViewModel!=null)
+        if (myViewModel!=null){
             this.myViewModel = myViewModel;
+            if (solvingAlgorithm != null){
+                myViewModel.setSolvingAlgorithm(solvingAlgorithm);
+            }
+            if (generateAlgorithm != null){
+                myViewModel.setGenerateAlgorithm(generateAlgorithm);
+            }
+        }
     }
 
     public void dfsA() {
         DFS.setStyle("-fx-background-color: #3434eb; ");
         BFS.setStyle("-fx-background-color: #a7a7a8; ");
         BestFS.setStyle("-fx-background-color: #a7a7a8; ");
-        myViewModel.setSolvingAlgorithm("DepthFirstSearch");
+        solvingAlgorithm = "DepthFirstSearch";
     }
 
     public void bfsA() {
-
         DFS.setStyle("-fx-background-color: #a7a7a8; ");
         BFS.setStyle("-fx-background-color: #3434eb; ");
         BestFS.setStyle("-fx-background-color: #a7a7a8; ");
-        myViewModel.setSolvingAlgorithm("BreadthFirstSearch");
+        solvingAlgorithm = "BreadthFirstSearch";
     }
 
     public void bestA() {
         DFS.setStyle("-fx-background-color: #a7a7a8; ");
         BFS.setStyle("-fx-background-color: #a7a7a8; ");
         BestFS.setStyle("-fx-background-color: #3434eb; ");
-        myViewModel.setSolvingAlgorithm("BestFirstSearch");
+        solvingAlgorithm = "BestFirstSearch";
     }
 
     public void simpleMazeC() {
         simpleM.setStyle("-fx-background-color: #3434eb; ");
         myM.setStyle("-fx-background-color: #a7a7a8; ");
         emptyM.setStyle("-fx-background-color: #a7a7a8; ");
-        myViewModel.setGenerateAlgorithm("SimpleMazeGenerator");
+        generateAlgorithm = "SimpleMazeGenerator";
     }
 
     public void myMazeC() {
         simpleM.setStyle("-fx-background-color: #a7a7a8; ");
         myM.setStyle("-fx-background-color: #3434eb; ");
         emptyM.setStyle("-fx-background-color: #a7a7a8; ");
-        myViewModel.setGenerateAlgorithm("MyMazeGenerator");
+        generateAlgorithm = "MyMazeGenerator";
     }
 
     public void emptyMazeC() {
         simpleM.setStyle("-fx-background-color: #a7a7a8; ");
         myM.setStyle("-fx-background-color: #a7a7a8; ");
         emptyM.setStyle("-fx-background-color: #3434eb; ");
-        myViewModel.setGenerateAlgorithm("EmptyMazeGenerator");
+        generateAlgorithm = "EmptyMazeGenerator";
     }
 
     public void setCharacter(){
@@ -114,12 +122,10 @@ public class OptionsViewControl {
                 myMazeC();
                 break;
             case "EmptyMazeGenerator":
-               emptyMazeC();
+                emptyMazeC();
                 break;
         }
         setCharacter();
     }
-
-
 
 }
