@@ -44,7 +44,6 @@ public class MyModel extends Observable implements IModel {
 
     @Override
     public void generateMaze(int row, int col) {
-        int maxFeature = Integer.max(row,col);
         if (!isStartNewGame)
             isStartNewGame = true;
         else {

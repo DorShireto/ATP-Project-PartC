@@ -76,7 +76,7 @@ public class MyViewModel extends Observable implements Observer {
     {
         this.charRowPositionI = position.getRowIndex();
         this.charColPositionI = position.getColumnIndex();
-        this.model.setCharcterPosition(charRowPositionI,charColPositionI);
+        this.model.setCharacterPosition(charRowPositionI,charColPositionI);
 
     }
 

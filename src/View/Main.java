@@ -1,5 +1,6 @@
 package View;
 
+import Model.MazeCharacter;
 import Model.MyModel;
 import ViewModel.MyViewModel;
 import com.oracle.jrockit.jfr.client.FlightRecordingClient;
@@ -22,6 +23,7 @@ import java.io.IOException;
 public class Main extends Application {
     public static MyViewModel viewModel;
     public static MyModel model;
+    public static MazeCharacter character;
     public static MainMenuViewControl menuControl;
     public static MediaPlayer player;
     private static Scene mainMenuScene,helpScene,aboutScene,optionsScene;
@@ -73,7 +75,7 @@ public class Main extends Application {
 
         //Update model and view model information
         model = new MyModel();
-        model.runMyServer();
+        //model.runMyServer();
         viewModel = new MyViewModel(model);
         model.addObserver(viewModel);
 

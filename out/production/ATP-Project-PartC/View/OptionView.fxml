@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="backG" prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OptionsViewControl">
+   <children>
+      <Text layoutX="324.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Options">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="145.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solver Style" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="148.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maze Type" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="151.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Character" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="DFS" layoutX="272.0" layoutY="137.0" mnemonicParsing="false" onAction="#dfsA" prefHeight="36.0" prefWidth="92.0" text="DFS" />
+      <Button fx:id="BFS" layoutX="368.0" layoutY="137.0" mnemonicParsing="false" onAction="#bfsA" prefHeight="36.0" prefWidth="92.0" text="BFS" />
+      <Button fx:id="BestFS" layoutX="464.0" layoutY="137.0" mnemonicParsing="false" onAction="#bestA" prefHeight="36.0" prefWidth="92.0" text="BestFS" />
+      <Button fx:id="simpleM" layoutX="272.0" layoutY="223.0" mnemonicParsing="false" onAction="#simpleMazeC" prefHeight="36.0" prefWidth="92.0" text="Simple Maze" />
+      <Button fx:id="myM" layoutX="368.0" layoutY="223.0" mnemonicParsing="false" onAction="#myMazeC" prefHeight="36.0" prefWidth="92.0" text="My Maze" />
+      <Button fx:id="emptyM" layoutX="464.0" layoutY="223.0" mnemonicParsing="false" onAction="#emptyMazeC" prefHeight="36.0" prefWidth="92.0" text="Empty Maze" />
+      <ChoiceBox fx:id="charPicker" layoutX="339.0" layoutY="317.0" prefWidth="150.0" value=" Mulan "> 
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value=" Mulan " />
+               <String fx:value=" Mushu " />
+               <String fx:value=" General Li Shang " />
+               <String fx:value=" Chien Po " />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Text fontSmoothingType="LCD" layoutX="337.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please chose a character:" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="saveB" layoutX="304.0" layoutY="386.0" mnemonicParsing="false" onAction="#saveClicked" prefHeight="36.0" prefWidth="92.0" text="Save" />
+   </children>
+</AnchorPane>

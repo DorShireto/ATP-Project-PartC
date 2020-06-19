@@ -11,7 +11,7 @@ public class WinningViewControl {
 
     public void updateBackground()
     {
-        String usedChar = Main.model.player;
+        String usedChar = Main.character.getCharacterName();
         if(usedChar.equals("Mulan")) {
             backG.setStyle("-fx-background-image: url(/Images/MulanW.jpg)");
         }
