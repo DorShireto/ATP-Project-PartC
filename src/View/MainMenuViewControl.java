@@ -7,11 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+
 public class MainMenuViewControl {
     @FXML
     private AnchorPane newLoadP;
     @FXML
     private Label userName;
+    @FXML
+    private Button loadGameB,newGameB;
 
 
     public void setUser(String Name){
@@ -20,10 +24,16 @@ public class MainMenuViewControl {
     }
 
     public void playButtonClicked(ActionEvent actionEvent) {
+        boolean loadB = loadGameB.isVisible();
+        boolean newB = newGameB.isVisible();
+
+        loadGameB.setVisible(!loadB);
+        newGameB.setVisible(!newB);
         newLoadP.setVisible(true);
+
     }
 
-    public void settingButtonClicked(ActionEvent actionEvent) {
+    public void settingButtonClicked(ActionEvent actionEvent) throws IOException {
         Main.settings();
         newLoadP.setVisible(false);
     }

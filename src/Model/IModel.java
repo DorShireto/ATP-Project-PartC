@@ -5,14 +5,16 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
 
+import java.io.File;
 import java.util.Observer;
 
 public interface IModel {
+
     void stopAllCommunication();
 
-    int getCharRowPosition();
-
     Maze getMaze();
+
+    int getCharRowPosition();
 
     int getCharColPosition();
 
@@ -26,11 +28,26 @@ public interface IModel {
 
     void setSolvingAlgorithm(String algorithm);
 
-    void setMaze(Maze maze);
+//    void setMaze(Maze maze);
 
     void movePlayer(KeyCode keyCode);
 
     void setGenerateAlgorithm(String algorithm);
 
-    void setCharcterPosition(int charRowPositionI, int charColPositionI);
+    void setCharacterPosition(int charRowPositionI, int charColPositionI);
+
+    String getMainCharacterDirection();
+
+    boolean isAtTheEnd();
+
+    void saveCurrentMaze(File file, String name);
+
+    void saveOriginalMaze(File file, String name);
+
+    void loadMaze(File file);
+
+    MazeCharacter getLoadedCharacter();
+
+    //set player character for view
+    void setCharacter(String general_li_shang);
 }

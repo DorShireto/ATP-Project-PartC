@@ -29,6 +29,7 @@ public class OptionsViewControl {
     }
 
     public void bfsA() {
+
         DFS.setStyle("-fx-background-color: #a7a7a8; ");
         BFS.setStyle("-fx-background-color: #3434eb; ");
         BestFS.setStyle("-fx-background-color: #a7a7a8; ");
@@ -72,7 +73,7 @@ public class OptionsViewControl {
                 break;
             case " Mushu ":
                 myViewModel.setCharacterImage("/Images/MushuI.png");
-                Main.model.setCharacter("Mulan");
+                Main.model.setCharacter("Mushu");
                 break;
             case " General Li Shang ":
                 myViewModel.setCharacterImage("/Images/LiShangI.png");
@@ -86,7 +87,7 @@ public class OptionsViewControl {
     }
 
     public void saveClicked() {
-        setCharacter();
+        //setCharacter();
         Main.showMainScreen();
     }
 

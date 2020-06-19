@@ -47,9 +47,10 @@ public class MyViewModel extends Observable implements Observer {
 
     }
 
-    private void setMaze(Maze maze) { // created for the option of loading a maze from saved game
-        this.model.setMaze(maze);
-    }
+    // created for the option of loading a maze from saved game
+    //private void setMaze(Maze maze) {
+    //    this.model.setMaze(maze);
+    //}
 
     public int getCharecterColPos() { return charColPositionI;    }
 

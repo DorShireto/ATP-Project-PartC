@@ -22,7 +22,7 @@ public class LoginViewControl {
 
     public void startButtonClicked(ActionEvent actionEvent) throws IOException {
         String userName = userID.getText();
-        Main.loingDone(userName);
+        Main.loginDone(userName);
 
     }
 }
