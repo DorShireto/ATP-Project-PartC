@@ -126,7 +126,7 @@ public class OptionsViewControl {
                 emptyMazeC();
                 break;
         }
-        setCharacter();
+        //setCharacter();
     }
 
 }

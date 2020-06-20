@@ -200,7 +200,9 @@ public class Main extends Application {
     }
 
     //about handle
-    public static void about() { mainMenuStage.setScene(aboutScene);  }
+    public static void about() {
+        //AboutViewControl.aboutImage.setCache(true);
+        mainMenuStage.setScene(aboutScene);  }
     public static void backFromAbout() {  mainMenuStage.setScene(mainMenuScene);  }
 
     //Winning handle

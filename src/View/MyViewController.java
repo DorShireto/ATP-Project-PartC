@@ -117,7 +117,13 @@ public class MyViewController implements Observer,IView {
         panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(200.0)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
         gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(280)*/);
-        mazeDisplayer.characterImageProperty().bind(viewModel.imageString);
+        System.out.println("char image from Maze dis before bind:" + mazeDisplayer.characterImageProperty().toString());
+        System.out.println("char image from viewModel before bind:" + viewModel.imageString.toString());
+        viewModel.imageString.bindBidirectional(mazeDisplayer.characterImageProperty());
+
+        //mazeDisplayer.characterImageProperty().bind(viewModel.imageString);
+        System.out.println("char image from Maze dis after bind:" + mazeDisplayer.characterImageProperty().toString());
+        System.out.println("char image from viewModel after bind:" + viewModel.imageString.toString());
 
     }
 
@@ -152,6 +158,7 @@ public class MyViewController implements Observer,IView {
         this.maze = viewModel.getMaze();
         displayMaze(this.maze);
         solveMaze.setDisable(false);
+        saveMaze.setDisable(false);
         mazeDisplayer.requestFocus();
 
     }

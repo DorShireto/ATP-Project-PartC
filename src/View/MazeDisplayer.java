@@ -45,7 +45,8 @@ public class MazeDisplayer extends Canvas {
     public MazeDisplayer(){
         wall = new SimpleStringProperty("Images/flowerWall.jpeg");
         backGround = new SimpleStringProperty("Images/boardBG.jpeg");
-        characterImage = new SimpleStringProperty("Images/flowerWall.jpeg");
+        characterImage = new SimpleStringProperty("Images/MulanI.png");
+        System.out.println("image at Maze Displayer const is " + characterImage);
 
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
@@ -87,16 +88,18 @@ public class MazeDisplayer extends Canvas {
             cellWidth = canvasWidth/arrMaze[0].length;
 
             try{
-                Image boardBG = new Image((this.backGround.get()));
+                //Image boardBG = new Image((this.backGround.get()));
                 Image wall = new Image((this.wall.get()));
-                Image characterImage = new Image((this.characterImage.get()));
+                System.out.println("image at Maze draw is " + characterImage);
+                String charURL =this.characterImage.get();
+                Image characterImage = new Image(charURL);
                 Image trophy = new Image("/Images/trophy.png");
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
                 //gc.setFill();
 
                 //Draw back ground picture
-                gc.drawImage(boardBG,0,0,canvasWidth,canvasHeight);
+                //gc.drawImage(boardBG,0,0,canvasWidth,canvasHeight);
                 //Draw maze
                 for (int i = 0; i < arrMaze.length; i++) {
                     for (int j = 0; j < arrMaze[i].length; j++) {

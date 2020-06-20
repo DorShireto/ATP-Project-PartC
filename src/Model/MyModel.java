@@ -163,7 +163,7 @@ public class MyModel extends Observable implements IModel {
                     mainCharacter.setCharacterCol(mainCharacterPositionCol+1);
                 }
                 break;
-            /***** DOWN & RIGHT *****/
+            /***** DOWN & LEFT *****/
             case Z:
             case NUMPAD1:
                 if (mainCharacterPositionCol-1 < 0 || mainCharacterPositionRow+1 >= maze.getMaze().length)
@@ -175,7 +175,7 @@ public class MyModel extends Observable implements IModel {
                     mainCharacter.setCharacterCol(mainCharacterPositionCol-1);
                 }
                 break;
-            /***** DOWN & LEFT *****/
+            /***** DOWN & RIGHT *****/
             case C:
             case NUMPAD3:
                 if (mainCharacterPositionCol+1 >= maze.getMaze()[0].length || mainCharacterPositionRow+1 >= maze.getMaze().length)

@@ -25,7 +25,7 @@ public class MyViewModel extends Observable implements Observer {
         this.model = model;
         // init the StringProperty
         model.setObserver(this);
-        this.imageString = new SimpleStringProperty("0");
+        this.imageString = new SimpleStringProperty("1");
         this.charRowPosition = new SimpleStringProperty("0");
         this.charColPosition = new SimpleStringProperty("0");
 
@@ -73,11 +73,10 @@ public class MyViewModel extends Observable implements Observer {
     public void setCharacterImage(String characterImage) {  this.imageString.setValue(characterImage);  }
 
     public void updateCharacterPosition(Position position)
-    {
+    { // will be called from load game
         this.charRowPositionI = position.getRowIndex();
         this.charColPositionI = position.getColumnIndex();
         this.model.setCharacterPosition(charRowPositionI,charColPositionI);
-
     }
 
 

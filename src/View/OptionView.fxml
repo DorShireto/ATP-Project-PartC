@@ -30,7 +30,7 @@
       </Text>
       <Button fx:id="DFS" layoutX="272.0" layoutY="137.0" mnemonicParsing="false" onAction="#dfsA" prefHeight="36.0" prefWidth="92.0" text="DFS" />
       <Button fx:id="BFS" layoutX="368.0" layoutY="137.0" mnemonicParsing="false" onAction="#bfsA" prefHeight="36.0" prefWidth="92.0" text="BFS" />
-      <Button fx:id="BestFS" layoutX="464.0" layoutY="137.0" mnemonicParsing="false" onAction="#bestA" prefHeight="36.0" prefWidth="92.0" text="BestFS" />
+      <Button fx:id="BestFS" layoutX="464.0" layoutY="137.0" mnemonicParsing="false" onAction="#bestA" prefHeight="36.0" prefWidth="92.0" text="BestFS" AnchorPane.leftAnchor="464.0" AnchorPane.topAnchor="137.0" />
       <Button fx:id="simpleM" layoutX="272.0" layoutY="223.0" mnemonicParsing="false" onAction="#simpleMazeC" prefHeight="36.0" prefWidth="92.0" text="Simple Maze" />
       <Button fx:id="myM" layoutX="368.0" layoutY="223.0" mnemonicParsing="false" onAction="#myMazeC" prefHeight="36.0" prefWidth="92.0" text="My Maze" />
       <Button fx:id="emptyM" layoutX="464.0" layoutY="223.0" mnemonicParsing="false" onAction="#emptyMazeC" prefHeight="36.0" prefWidth="92.0" text="Empty Maze" />

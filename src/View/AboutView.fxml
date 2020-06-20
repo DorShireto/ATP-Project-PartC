@@ -28,10 +28,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/Images/AboutI.jpg" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="aboutImage" cache="true" fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(/Images/AboutI.jpg);" />
    </children>
 </AnchorPane>

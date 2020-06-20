@@ -6,10 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
 public class MainMenuViewControl {
+
     @FXML
     private AnchorPane newLoadP;
     @FXML
