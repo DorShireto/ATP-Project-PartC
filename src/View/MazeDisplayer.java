@@ -15,6 +15,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.Socket;
 
+import static java.awt.Color.*;
+
 public class MazeDisplayer extends Canvas {
 
     public Maze maze;
@@ -27,9 +29,13 @@ public class MazeDisplayer extends Canvas {
     private int charRowIndex,charColIndex;//TODO: might need to be init
 
     // Texture prop
-    private StringProperty wall = new SimpleStringProperty();;
-    private StringProperty backGround = new SimpleStringProperty();;
-    private StringProperty characterImage = new SimpleStringProperty();;
+    private StringProperty wall = new SimpleStringProperty();
+    private StringProperty backGround = new SimpleStringProperty();
+    private StringProperty characterImage = new SimpleStringProperty();
+
+
+    //wall,backGround,characterImage;
+
 
     // Cells props
     double canvasHeight,canvasWidth,cellHeight,cellWidth;
@@ -37,9 +43,9 @@ public class MazeDisplayer extends Canvas {
 
 
     public MazeDisplayer(){
-        wall = new SimpleStringProperty();
-        backGround = new SimpleStringProperty();
-        characterImage = new SimpleStringProperty();
+        //wall = new SimpleStringProperty();
+        //backGround = new SimpleStringProperty();
+        //characterImage = new SimpleStringProperty();
 
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
@@ -50,13 +56,7 @@ public class MazeDisplayer extends Canvas {
     public boolean isResizable() {
         return true;
     }
-    @Override
-    public void resize(double width, double height)
-    {
-        super.setWidth(width);
-        super.setHeight(height);
-        draw();
-    }
+
     @Override
     public double prefWidth(double height) {
         return getWidth();
@@ -75,6 +75,8 @@ public class MazeDisplayer extends Canvas {
         }
         return false;
     }
+
+
     public void draw()
     {
         if(maze!=null)
@@ -85,16 +87,20 @@ public class MazeDisplayer extends Canvas {
             cellWidth = canvasWidth/arrMaze[0].length;
 
             try{
-                Image boardBG = new Image(new FileInputStream(this.backGround.get()));
-                Image wall = new Image(new FileInputStream(this.wall.get()));
+//                Image boardBG = new Image(new FileInputStream(this.backGround.get()));
+                Image boardBG = new Image("Images/boardBG.jpeg");
+
+//                Image wall = new Image(new FileInputStream(this.wall.get()));//Resources/Images/flowerWall.jpeg
+                Image wall = new Image("Images/flowerWall.jpeg");//Resources/
+
                 Image characterImage = new Image(characterImageProperty().get());
                 Image trophy = new Image("/Images/trophy.png");
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
+                //gc.setFill();
 
                 //Draw back ground picture
                 gc.drawImage(boardBG,0,0,canvasWidth,canvasHeight);
-
                 //Draw maze
                 for (int i = 0; i < arrMaze.length; i++) {
                     for (int j = 0; j < arrMaze[i].length; j++) {
@@ -110,7 +116,7 @@ public class MazeDisplayer extends Canvas {
                 //Draw character
                 gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
-            catch (FileNotFoundException e) {
+            catch (Exception e) {
                // e.printStackTrace();
             }
         }

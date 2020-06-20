@@ -73,6 +73,7 @@ public class OptionsViewControl {
     }
 
     public void setCharacter(){
+        if(myViewModel==null) myViewModel=Main.getViewModel();
         String charecter = charPicker.getValue().toString();
         switch (charecter){
             case " Mulan ":
@@ -95,7 +96,7 @@ public class OptionsViewControl {
     }
 
     public void saveClicked() {
-        //setCharacter();
+        setCharacter();
         Main.showMainScreen();
     }
 

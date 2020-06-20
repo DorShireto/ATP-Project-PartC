@@ -3,9 +3,9 @@ package View;
 import Model.MazeCharacter;
 import Model.MyModel;
 import ViewModel.MyViewModel;
-import com.oracle.jrockit.jfr.client.FlightRecordingClient;
 import com.sun.javafx.css.Stylesheet;
 import javafx.application.Application;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,11 +27,16 @@ public class Main extends Application {
     public static MazeCharacter character;
     public static MainMenuViewControl menuControl;
     public static MediaPlayer player;
-    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,gameScene,alertScene,winningScene,loginScene;
+    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,gameScene,alertScene,winningScene;
+    private Scene loginScene;
     public Parent aboutFXML,alertFXML,helpFXML,loginFXML,mainMenuFXML,gameFXML,optionFXML,winningFXML;
     public static Stage mainMenuStage,alertStage,gameStage,winningStage;
-    public static MediaPlayer generalMusic,gameMusic;
-    public static FXMLLoader gameFxmlLoader;
+    public static MediaPlayer generalMusic,gameMusic,winningMusic;
+    public static FXMLLoader gameFxmlLoader,winnerFxmlLoader;
+    //public static StringProperty wall,backGround,characterImage;
+
+
+
 
 
 
@@ -55,6 +60,8 @@ public class Main extends Application {
         optionFXML= FXMLLoader.load(getClass().getResource("../View/OptionView.fxml"));
         winningFXML = FXMLLoader.load(getClass().getResource("../View/WinningView.fxml"));
         gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
+        gameFxmlLoader.load();
+        winnerFxmlLoader = new FXMLLoader((getClass().getResource("../View/WinningView.fxml")));
 
         //Loading scenes
         aboutScene = new Scene(aboutFXML,800,600);
@@ -77,7 +84,7 @@ public class Main extends Application {
         viewModel = new MyViewModel(model);
         model.addObserver(viewModel);
 
-        //start music
+        //start music TODO
         //File musicPath = new File("Resources/Music/menusMusic.mp3");
         //generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
         //generalMusic.play();
@@ -95,12 +102,25 @@ public class Main extends Application {
 
 
     public static void WinningView() {
+        //gameMusic.stop();TODO
+        File winningSongFile = new File("Resources/Music/winningSong.mp3");
+        winningMusic = new MediaPlayer(new Media(winningSongFile.toURI().toString()));
+        //winningMusic.play();TODO
+        WinningViewControl winningControl = winnerFxmlLoader.getController();
+        winningControl.updateBackground();
+        winningStage.show();
 
     }
 
 
 
     public static void backFromGame() {
+        gameStage.hide();
+        //gameMusic.stop(); TODO
+        //generalMusic.play(); TODO
+        mainMenuStage.setScene(mainMenuScene);
+        mainMenuStage.show();
+
     }
 
     public static void settings() throws IOException {
@@ -118,7 +138,6 @@ public class Main extends Application {
 
     public static void showMainScreen() { // back from option menu
         mainMenuStage.setScene(mainMenuScene); // this is not working yet!!
-        //TODO: setCharacter in OptionsViewControl doesn't work
 
     }
 
@@ -132,7 +151,6 @@ public class Main extends Application {
         gameStage = new Stage();
         gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
         gameStage.setScene(gameScene);
-        gameFxmlLoader.load();
         MyViewController myViewController = gameFxmlLoader.getController();
         myViewController.init(viewModel,gameScene,gameStage);
         viewModel.addObserver(myViewController);
@@ -159,7 +177,7 @@ public class Main extends Application {
 
     }
 
-    public static void load() {
+    public static void load() { //TODO
     }
 
     public static void loginDone(String userName) throws IOException {
@@ -187,9 +205,21 @@ public class Main extends Application {
 
     //Winning handle
     public static void backToMainMenu() {
+        winningMusic.stop();
+        generalMusic.play();
+        winningStage.hide();
+        mainMenuStage.setScene(mainMenuScene);
+        mainMenuStage.show();
     }
-    public static void restartGame() {
+    public static void restartGame() throws IOException {
+        winningMusic.stop();
+        winningStage.hide();
+        mainMenuStage.hide();
+        play();
+
     }
+
+    public static MyViewModel getViewModel(){return viewModel;}
 
 }
 

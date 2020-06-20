@@ -44,13 +44,16 @@ public class MyModel extends Observable implements IModel {
 
     @Override
     public void generateMaze(int row, int col) {
-        if (!isStartNewGame)
-            isStartNewGame = true;
-        else {
-            serverMazeGenerator.stop();
-            serverMazeGenerator = new Server(5400, 1000, new ServerStrategyGenerateMaze());
-        }
-        serverMazeGenerator.start();
+        /**
+         * Dor: this section causes server to crush - trying to run a server that already runs
+         * */
+        //if (!isStartNewGame)
+        //    isStartNewGame = true;
+        //else {
+        //    serverMazeGenerator.stop();
+        //    serverMazeGenerator = new Server(5400, 1000, new ServerStrategyGenerateMaze());
+        //}
+        //serverMazeGenerator.start();
         if (isSolved) {
             serverSolveMaze.stop();
             serverSolveMaze = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
@@ -78,7 +81,7 @@ public class MyModel extends Observable implements IModel {
                         }
                     });
             clientMazeGenerator.communicateWithServer();
-            mainCharacter = new MazeCharacter(maze.getStartPosition().getColumnIndex(), maze.getStartPosition().getRowIndex());
+            mainCharacter = new MazeCharacter(maze.getStartPosition().getRowIndex(),maze.getStartPosition().getColumnIndex());
             isAtTheEnd = false;
             setChanged();
             notifyObservers("Maze");

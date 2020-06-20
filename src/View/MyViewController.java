@@ -145,6 +145,7 @@ public class MyViewController implements Observer,IView {
             Main.showAlert();
             return;
         }
+        if(viewModel==null) viewModel=Main.getViewModel();
         viewModel.generate(rows,cols);
         mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
         mazeDisplayer.widthProperty().bind(gameWin.widthProperty());
@@ -209,8 +210,8 @@ public class MyViewController implements Observer,IView {
      * Stopping music and moving back to main screen
      * */
     public void backButton(ActionEvent e){
-        Main.player.stop();
-        mainStage.hide();
+        //Main.player.stop(); TODO: unable when music is on!
+        //mainStage.hide();
         //Main.checkUser(); // check login confirmed
         Main.backFromGame();
         Main.mainMenuStage.show();
