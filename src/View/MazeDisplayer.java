@@ -82,10 +82,17 @@ public class MazeDisplayer extends Canvas {
     {
         if(maze!=null)
         {
+            //canvasHeight = getHeight();
+            //canvasWidth = getWidth();
+            //cellHeight = canvasHeight/arrMaze.length;
+            //cellWidth = canvasWidth/arrMaze[0].length;
+
             canvasHeight = getHeight();
             canvasWidth = getWidth();
-            cellHeight = canvasHeight/arrMaze.length;
-            cellWidth = canvasWidth/arrMaze[0].length;
+            int row = arrMaze.length;
+            int col = arrMaze[0].length;
+            cellHeight = canvasHeight/row;
+            cellWidth = canvasWidth/col;
 
             try{
                 //Image boardBG = new Image((this.backGround.get()));
@@ -97,6 +104,12 @@ public class MazeDisplayer extends Canvas {
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
                 //gc.setFill();
+                Image BGIcon = new Image("Images/BGIcon.jpg");
+                for (int i = 0; i < arrMaze.length; i++) {
+                    for (int j = 0; j < arrMaze[i].length; j++) {
+                        gc.drawImage(BGIcon, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                    }
+                }
 
                 //Draw back ground picture
                 //gc.drawImage(boardBG,0,0,canvasWidth,canvasHeight);
@@ -113,7 +126,9 @@ public class MazeDisplayer extends Canvas {
                 //Draw trophy at goal position
                 gc.drawImage(trophy, maze.getGoalPosition().getColumnIndex() * cellWidth, maze.getGoalPosition().getRowIndex() * cellHeight, cellWidth, cellHeight);
                 //Draw character
-                gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+                gc.setFill(javafx.scene.paint.Color.BLACK);//TODO:
+                gc.fillRect(charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+                //gc.drawImage(COLOR, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
             catch (Exception e) {
                 e.printStackTrace();

@@ -30,7 +30,7 @@ public class MyViewController implements Observer,IView {
     @FXML
     private AnchorPane gameWin;
     @FXML
-    private Pane controllersPane,rightPane;
+    private Pane gamePane;
     @FXML
     private GridPane panel;
     @FXML
@@ -113,7 +113,7 @@ public class MyViewController implements Observer,IView {
      * */
     private void bindAll()
     {
-        controllersPane.prefHeightProperty().bind(gameWin.heightProperty());
+        gamePane.prefHeightProperty().bind(gameWin.heightProperty());
         panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(200.0)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
         gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(280)*/);

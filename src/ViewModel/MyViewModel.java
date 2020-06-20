@@ -58,7 +58,8 @@ public class MyViewModel extends Observable implements Observer {
 
     public Maze getMaze() { return this.model.getMaze();  }
 
-    public Solution getSolution() { return this.solution;    }
+    public Solution getSolution() { return this.solution; //TODO: returns null!
+        }
 
     public void generate(int rows, int cols) { this.model.generateMaze(rows,cols);    }
 

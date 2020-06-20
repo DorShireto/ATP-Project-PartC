@@ -89,7 +89,7 @@ public class OptionsViewControl {
                 Main.model.setCharacter("General Li Shang");
                 break;
             case " Chien Po ":
-                myViewModel.setCharacterImage("/Images/FattyI.png");
+                myViewModel.setCharacterImage("/Images/FattyI.jpg");
                 Main.model.setCharacter("Chien Po");
                 break;
         }
