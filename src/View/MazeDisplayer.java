@@ -29,9 +29,9 @@ public class MazeDisplayer extends Canvas {
     private int charRowIndex,charColIndex;//TODO: might need to be init
 
     // Texture prop
-    private StringProperty wall = new SimpleStringProperty();
-    private StringProperty backGround = new SimpleStringProperty();
-    private StringProperty characterImage = new SimpleStringProperty();
+    private StringProperty wall ;
+    private StringProperty backGround ;
+    private StringProperty characterImage ;
 
 
     //wall,backGround,characterImage;
@@ -43,9 +43,9 @@ public class MazeDisplayer extends Canvas {
 
 
     public MazeDisplayer(){
-        //wall = new SimpleStringProperty();
-        //backGround = new SimpleStringProperty();
-        //characterImage = new SimpleStringProperty();
+        wall = new SimpleStringProperty("Images/flowerWall.jpeg");
+        backGround = new SimpleStringProperty("Images/boardBG.jpeg");
+        characterImage = new SimpleStringProperty("Images/flowerWall.jpeg");
 
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
@@ -87,13 +87,9 @@ public class MazeDisplayer extends Canvas {
             cellWidth = canvasWidth/arrMaze[0].length;
 
             try{
-//                Image boardBG = new Image(new FileInputStream(this.backGround.get()));
-                Image boardBG = new Image("Images/boardBG.jpeg");
-
-//                Image wall = new Image(new FileInputStream(this.wall.get()));//Resources/Images/flowerWall.jpeg
-                Image wall = new Image("Images/flowerWall.jpeg");//Resources/
-
-                Image characterImage = new Image(characterImageProperty().get());
+                Image boardBG = new Image((this.backGround.get()));
+                Image wall = new Image((this.wall.get()));
+                Image characterImage = new Image((this.characterImage.get()));
                 Image trophy = new Image("/Images/trophy.png");
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
@@ -117,7 +113,7 @@ public class MazeDisplayer extends Canvas {
                 gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
             catch (Exception e) {
-               // e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
