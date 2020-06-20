@@ -44,7 +44,6 @@ public class MyViewModel extends Observable implements Observer {
             notifyObservers();
         }
 
-
     }
 
     // created for the option of loading a maze from saved game

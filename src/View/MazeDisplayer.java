@@ -107,7 +107,7 @@ public class MazeDisplayer extends Canvas {
                 Image BGIcon = new Image("Images/BGIcon.jpg");
                 for (int i = 0; i < arrMaze.length; i++) {
                     for (int j = 0; j < arrMaze[i].length; j++) {
-                        gc.drawImage(BGIcon, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                       // gc.drawImage(BGIcon, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                     }
                 }
 
@@ -120,15 +120,15 @@ public class MazeDisplayer extends Canvas {
                             //gc.fillRect(i * cellHeight, j * cellWidth, cellHeight, cellWidth);
                             gc.drawImage(wall, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                         }
+
                     }
                 }
 
                 //Draw trophy at goal position
                 gc.drawImage(trophy, maze.getGoalPosition().getColumnIndex() * cellWidth, maze.getGoalPosition().getRowIndex() * cellHeight, cellWidth, cellHeight);
                 //Draw character
-                gc.setFill(javafx.scene.paint.Color.BLACK);//TODO:
-                gc.fillRect(charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
-                //gc.drawImage(COLOR, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+                System.out.println("charRowIndex: "+charRowIndex+" charColIndex: "+charColIndex);
+                gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
             catch (Exception e) {
                 e.printStackTrace();

@@ -97,6 +97,8 @@ public class MyViewController implements Observer,IView {
     public void update(Observable o, Object arg) {
         if(o == viewModel)
         {
+            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
+            mazeDisplayer.setMaze(maze);
             displayMaze(viewModel.getMaze());
             generateMaze.setDisable(false);
             solution = viewModel.getSolution();
@@ -237,6 +239,7 @@ public class MyViewController implements Observer,IView {
         Position currentPos = new Position(charXPos,charYPos);
         this.viewModel.getMaze().setStartPosition(currentPos);
         showSol();
+
     }
 
     public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
@@ -264,7 +267,7 @@ public class MyViewController implements Observer,IView {
     { // checking if current location is at goal position
         int goalX,goalY;
         goalX = mazeDisplayer.maze.getGoalPosition().getRowIndex();
-        goalY = mazeDisplayer.maze.getGoalPosition().getRowIndex();
+        goalY = mazeDisplayer.maze.getGoalPosition().getColumnIndex();
         if(charXPos == goalX && charYPos == goalY)
             Main.WinningView();
 

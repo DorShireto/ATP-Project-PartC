@@ -86,6 +86,7 @@ public class MyModel extends Observable implements IModel {
             setChanged();
             notifyObservers("Maze");
         } catch(Exception ignored) {
+            ignored.printStackTrace();
         }
     }
 
@@ -228,6 +229,7 @@ public class MyModel extends Observable implements IModel {
             setChanged();
             notifyObservers("Solution");
         } catch(Exception ignored) {
+            ignored.printStackTrace();
         }
     }
 
