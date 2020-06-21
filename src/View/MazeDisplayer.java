@@ -76,17 +76,15 @@ public class MazeDisplayer extends Canvas {
         }
         return false;
     }
-
+    //canvasHeight = getHeight();
+    //canvasWidth = getWidth();
+    //cellHeight = canvasHeight/arrMaze.length;
+    //cellWidth = canvasWidth/arrMaze[0].length;
 
     public void draw()
     {
         if(maze!=null)
         {
-            //canvasHeight = getHeight();
-            //canvasWidth = getWidth();
-            //cellHeight = canvasHeight/arrMaze.length;
-            //cellWidth = canvasWidth/arrMaze[0].length;
-
             canvasHeight = getHeight();
             canvasWidth = getWidth();
             int row = arrMaze.length;
@@ -104,31 +102,41 @@ public class MazeDisplayer extends Canvas {
                 GraphicsContext gc = getGraphicsContext2D();
                 gc.clearRect(0,0,canvasWidth,canvasHeight);
                 //gc.setFill();
-                Image BGIcon = new Image("Images/BGIcon.jpg");
+
+                //Image BGIcon = new Image("Images/BGIcon.jpg");TODO
+                Image BGIcon = new Image("Images/blackB.png");
                 for (int i = 0; i < arrMaze.length; i++) {
                     for (int j = 0; j < arrMaze[i].length; j++) {
-                       // gc.drawImage(BGIcon, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                        gc.setFill(javafx.scene.paint.Color.BLACK);//TODO:
+                        //gc.fillRect(charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+                        gc.fillRect( j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                       // gc.drawImageנ, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+
                     }
                 }
 
                 //Draw back ground picture
                 //gc.drawImage(boardBG,0,0,canvasWidth,canvasHeight);
                 //Draw maze
+
                 for (int i = 0; i < arrMaze.length; i++) {
                     for (int j = 0; j < arrMaze[i].length; j++) {
                         if (arrMaze[i][j] == 1) {
                             //gc.fillRect(i * cellHeight, j * cellWidth, cellHeight, cellWidth);
                             gc.drawImage(wall, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                         }
-
                     }
                 }
 
                 //Draw trophy at goal position
                 gc.drawImage(trophy, maze.getGoalPosition().getColumnIndex() * cellWidth, maze.getGoalPosition().getRowIndex() * cellHeight, cellWidth, cellHeight);
                 //Draw character
-                System.out.println("charRowIndex: "+charRowIndex+" charColIndex: "+charColIndex);
-                gc.drawImage(characterImage, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
+
+                gc.setFill(javafx.scene.paint.Color.ORANGE);//TODO:
+                System.out.println("Row Index: " + charRowIndex + " Col Index: " + charColIndex);
+                gc.fillRect(cellWidth * charColIndex, charRowIndex * cellHeight, cellWidth, cellHeight);
+
+                //gc.drawImage(COLOR, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -166,8 +174,12 @@ public class MazeDisplayer extends Canvas {
         }
     }
     public void setCharecterPos(int x, int y) {
+        //System.out.println("char before change " + charRowIndex + " , " + charColIndex);
         this.charRowIndex = x;
         this.charColIndex = y;
+        //System.out.println("char after change " + charRowIndex + " , " + charColIndex);
+
+        draw();
     }
     public StringProperty characterImageProperty() {
         return characterImage;
