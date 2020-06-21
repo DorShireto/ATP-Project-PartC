@@ -280,7 +280,9 @@ public class MyModel extends Observable implements IModel {
 
     private Maze getCurrentMaze() {
         try {
-            return new Maze(maze);
+            Maze toRet = new Maze(maze);
+            toRet.setGoalPosition(maze.getGoalPosition());
+            return toRet;
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -309,6 +311,7 @@ public class MyModel extends Observable implements IModel {
             alert.setGraphic(null);
             alert.setContentText("Loaded file was not a saved maze!\nPlease load the right type of file");
             alert.show();
+            e.printStackTrace();
         }
     }
 
