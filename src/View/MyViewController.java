@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -121,14 +122,6 @@ public class MyViewController implements Observer,IView {
         panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(200.0)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
         gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(280)*/);
-        System.out.println("char image from Maze dis before bind:" + mazeDisplayer.characterImageProperty().toString());
-        System.out.println("char image from viewModel before bind:" + viewModel.imageString.toString());
-        viewModel.imageString.bindBidirectional(mazeDisplayer.characterImageProperty());
-
-        //mazeDisplayer.characterImageProperty().bind(viewModel.imageString);
-        System.out.println("char image from Maze dis after bind:" + mazeDisplayer.characterImageProperty().toString());
-        System.out.println("char image from viewModel after bind:" + viewModel.imageString.toString());
-
     }
 
     /**
@@ -199,8 +192,11 @@ public class MyViewController implements Observer,IView {
      * */
 
     public void saveMaze(){
+        FileChooser fileChooser = new FileChooser();
+        File saveFile = fileChooser.showSaveDialog(null);
+        System.out.println(saveFile.getAbsolutePath());
+
         try{
-            File saveFile = new File("Resources/mulanGameSave.txt");
             saveFile.createNewFile(); // if file already exists will do nothing
             viewModel.model.saveCurrentMaze(saveFile,viewModel.getCharacterName());
         }
@@ -220,6 +216,7 @@ public class MyViewController implements Observer,IView {
         //mainStage.hide();
         //Main.checkUser(); // check login confirmed
         Main.backFromGame();
+        Main.gameStage.hide();
         Main.mainMenuStage.show();
     }
 
@@ -255,5 +252,7 @@ public class MyViewController implements Observer,IView {
             mazeDisplayer.setSolution(this.solution);
         }
     }
+
+
 
 }

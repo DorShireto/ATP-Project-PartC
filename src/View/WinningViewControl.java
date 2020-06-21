@@ -15,14 +15,16 @@ public class WinningViewControl {
     private AnchorPane backG;
 
     public void updateBackground() {
-        String usedChar = Main.character.getCharacterName();
-        if (usedChar.equals("Mulan")) {
+        String usedChar = Main.viewModel.getCharacterName();
+        System.out.println("usedChar = "+usedChar);
+
+        if (usedChar.equals(" Mulan ")) {
             charWinningScreen.setImage(new Image("/Images/MulanW.jpg"));
             //backG.setStyle("-fx-background-image: url(/Images/MulanW.jpg)");
-        } else if (usedChar.equals("LiShang")) {
+        } else if (usedChar.equals(" LiShang ")) {
             charWinningScreen.setImage(new Image("/Images/LiShangW.png"));
             //backG.setStyle("-fx-background-image: url(/Images/LiShangW.png)");
-        } else if (usedChar.equals("Mushu")) {
+        } else if (usedChar.equals(" Mushu ")) {
             charWinningScreen.setImage(new Image("/Images/MushuW.jpg"));
             //backG.setStyle("-fx-background-image: url(/Images/MushuW.jpg)");
         } else{//cheinPoW

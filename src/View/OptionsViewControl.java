@@ -9,7 +9,6 @@ import javafx.scene.control.ChoiceBox;
 
 
 public class OptionsViewControl {
-    private MyViewModel myViewModel;
     @FXML
     private Button DFS,BFS,BestFS,simpleM,myM,emptyM,backB;
     @FXML
@@ -20,14 +19,13 @@ public class OptionsViewControl {
     public void init(MyViewModel myViewModel)
     {
         if (myViewModel!=null){
-            this.myViewModel = myViewModel;
             if (solvingAlgorithm != null){
                 myViewModel.setSolvingAlgorithm(solvingAlgorithm);
             }
             if (generateAlgorithm != null){
                 myViewModel.setGenerateAlgorithm(generateAlgorithm);
             }
-            setCharacter();
+
         }
     }
 
@@ -73,31 +71,10 @@ public class OptionsViewControl {
         generateAlgorithm = "EmptyMazeGenerator";
     }
 
-    public void setCharacter(){
-        if(myViewModel==null) myViewModel=Main.getViewModel();
-        String charecter = charPicker.getValue().toString();
-        switch (charecter){
-            case " Mulan ":
-                myViewModel.setCharacterImage(" Mulan ","/Images/MulanI.png");
-                Main.model.setCharacter("Mulan");
-                break;
-            case " Mushu ":
-                myViewModel.setCharacterImage(" Mushu ","/Images/MushuI.png");
-                Main.model.setCharacter("Mushu");
-                break;
-            case " General Li Shang ":
-                myViewModel.setCharacterImage(" General Li Shang ","/Images/LiShangI.png");
-                Main.model.setCharacter("General Li Shang");
-                break;
-            case " Chien Po ":
-                myViewModel.setCharacterImage(" Chien Po ","/Images/FattyI.jpg");
-                Main.model.setCharacter("Chien Po");
-                break;
-        }
-    }
 
     public void saveClicked() {
-        setCharacter();
+        String charecter = charPicker.getValue().toString();
+        Main.viewModel.setCharacterImage(charecter);
         Main.showMainScreen();
     }
 

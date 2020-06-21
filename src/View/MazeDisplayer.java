@@ -45,9 +45,6 @@ public class MazeDisplayer extends Canvas {
     public MazeDisplayer(){
         wall = new SimpleStringProperty("Images/flowerWall.jpeg");
         backGround = new SimpleStringProperty("Images/boardBG.jpeg");
-        characterImage = new SimpleStringProperty("Images/MulanI.png");
-        System.out.println("image at Maze Displayer const is " + characterImage);
-
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
     }
@@ -97,8 +94,7 @@ public class MazeDisplayer extends Canvas {
             try{
                 //Image boardBG = new Image((this.backGround.get()));
                 Image wall = new Image((this.wall.get()));
-                System.out.println("image at Maze draw is " + characterImage);
-                String charURL =this.characterImage.get();
+                String charURL =Main.viewModel.getCharacterPicPath();
                 Image characterImage = new Image(charURL);
                 Image trophy = new Image("/Images/trophy.png");
                 GraphicsContext gc = getGraphicsContext2D();
@@ -147,7 +143,7 @@ public class MazeDisplayer extends Canvas {
         canvasWidth = getWidth();
         cellHeight = canvasHeight/arrMaze.length;
         cellWidth = canvasWidth/arrMaze[0].length;
-        Image characterImage = new Image(characterImageProperty().get());
+        Image characterImage = new Image(Main.getViewModel().getCharacterPicPath());
         Image trophy = new Image("/Images/trophy.png");
         GraphicsContext graphicsContext = getGraphicsContext2D();
         int pathSize = solution.getSolutionPath().size();
@@ -169,9 +165,4 @@ public class MazeDisplayer extends Canvas {
         this.charRowIndex = x;
         this.charColIndex = y;
     }
-    public StringProperty characterImageProperty() {
-        return characterImage;
-    }
-
-
 }
