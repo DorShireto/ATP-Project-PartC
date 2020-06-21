@@ -3,6 +3,7 @@ package View;
 import Model.MazeCharacter;
 import Model.MyModel;
 import ViewModel.MyViewModel;
+import algorithms.mazeGenerators.Maze;
 import com.sun.javafx.css.Stylesheet;
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
@@ -68,7 +69,7 @@ public class Main extends Application {
         alertScene = new Scene(alertFXML,500,250);
         helpScene = new Scene(helpFXML,800,484);
         loginScene = new Scene(loginFXML,600,400);
-        gameScene = new Scene(gameFXML,1024,768);
+        gameScene = new Scene(gameFXML,700,482);
         optionsScene = new Scene(optionFXML,800,600);
         winningScene = new Scene(winningFXML,600,400);
 
@@ -186,6 +187,32 @@ public class Main extends Application {
         File saveFile = fileChooser.showOpenDialog(null);
         saveFile.createNewFile(); // if file already exists will do nothing
         viewModel.model.loadMaze(saveFile);
+
+        gameStage = new Stage();
+        gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        gameStage.setScene(gameScene);
+
+        MyViewController myViewController = gameFxmlLoader.getController();
+        myViewController.init(viewModel,gameScene,gameStage);
+        viewModel.addObserver(myViewController);
+        myViewController.load();
+        //TODO: DOR - CONTINUE FROM HERE
+        alertStage = new Stage();
+        alertStage.setScene(alertScene);
+        alertStage.initModality(Modality.WINDOW_MODAL);
+
+        //loading winning stage and scene
+        //winningStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        winningStage = new Stage();
+        winningStage.setScene(winningScene);
+        winningStage.initModality(Modality.WINDOW_MODAL);
+
+        //loading game music
+        File gameMusicFile = new File("Resources/Music/gameMusic.mp3");
+        gameMusic = new MediaPlayer(new Media(gameMusicFile.toURI().toString()));
+        mainMenuStage.hide();
+        gameStage.show();
+
     }
 
     public static void loginDone(String userName) throws IOException {
@@ -217,6 +244,7 @@ public class Main extends Application {
     public static void backToMainMenu() {
         //winningMusic.stop();
         //generalMusic.play();
+        gameStage.close();
         winningStage.hide();
         gameStage.hide();
         mainMenuStage.setScene(mainMenuScene);

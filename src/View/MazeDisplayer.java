@@ -68,7 +68,8 @@ public class MazeDisplayer extends Canvas {
         if(maze != null){
             this.maze=maze;
             this.arrMaze = maze.getMaze();
-            draw();
+            //draw(); TODO NEW
+            //drawChar();
             return true;
         }
         return false;
@@ -83,7 +84,9 @@ public class MazeDisplayer extends Canvas {
         if(maze!=null)
         {
             canvasHeight = getHeight();
+            System.out.println("canvasHeight = " + canvasHeight);
             canvasWidth = getWidth();
+            System.out.println("canvasWidth = " + canvasWidth);
             int row = arrMaze.length;
             int col = arrMaze[0].length;
             cellHeight = canvasHeight/row;
@@ -130,9 +133,11 @@ public class MazeDisplayer extends Canvas {
 
                 gc.setFill(javafx.scene.paint.Color.ORANGE);//TODO:
                 System.out.println("Row Index: " + charRowIndex + " Col Index: " + charColIndex);
-                gc.fillRect(cellWidth * charColIndex, charRowIndex * cellHeight, cellWidth, cellHeight);
+                //gc.fillRect(cellWidth * charColIndex, charRowIndex * cellHeight, cellWidth, cellHeight);
+                //drawChar();
+                //gc.drawImage(characterImage,  charColIndex * cellHeight,charRowIndex * cellWidth, cellWidth, cellHeight);
+                gc.drawImage(characterImage, charColIndex * cellWidth, charRowIndex * cellHeight, cellWidth, cellHeight);
 
-                //gc.drawImage(COLOR, charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -170,11 +175,12 @@ public class MazeDisplayer extends Canvas {
         }
     }
     public void setCharecterPos(int x, int y) {
-        //System.out.println("char before change " + charRowIndex + " , " + charColIndex);
+        System.out.println("char before change " + charRowIndex + " , " + charColIndex);
         this.charRowIndex = x;
         this.charColIndex = y;
-        //System.out.println("char after change " + charRowIndex + " , " + charColIndex);
+        System.out.println("char after change " + charRowIndex + " , " + charColIndex);
 
-        draw();
+        //draw(); TODO NEW
+        //drawChar();
     }
 }

@@ -281,6 +281,7 @@ public class MyModel extends Observable implements IModel {
     private Maze getCurrentMaze() {
         try {
             Maze toRet = new Maze(maze);
+            toRet.setStartPosition(maze.getStartPosition());
             toRet.setGoalPosition(maze.getGoalPosition());
             return toRet;
         } catch(Exception e) {

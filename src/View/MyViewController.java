@@ -27,10 +27,10 @@ import javafx.stage.WindowEvent;
 
 
 public class MyViewController implements Observer,IView {
-    public MazeDisplayer mazeDisplayer;
+    public  MazeDisplayer mazeDisplayer;
     private MyViewModel viewModel;
     @FXML
-    private AnchorPane gameWin;
+    public AnchorPane gameWin;
     @FXML
     private Pane gamePane;
     @FXML
@@ -47,6 +47,21 @@ public class MyViewController implements Observer,IView {
     public boolean showSolution;
     int charXPos,charYPos;
     private Maze maze;
+
+
+
+    public void load(){
+
+        Maze loadedMaze = viewModel.getMaze();
+        System.out.println("mazeDisplayer Height and Width before: " + mazeDisplayer.heightProperty().getValue() + " X " + mazeDisplayer.widthProperty().getValue());
+        System.out.println("gameWin Height and Width before: " + gameWin.heightProperty() + " X " + gameWin.widthProperty().subtract(218));
+        mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
+        mazeDisplayer.widthProperty().bind(gameWin.widthProperty().subtract(218));
+        System.out.println("mazeDisplayer Height and Width after: " + mazeDisplayer.heightProperty() + " X " + mazeDisplayer.widthProperty());
+        System.out.println("gameWin Height and Width after: " + gameWin.heightProperty() + " X " + gameWin.widthProperty().subtract(218));
+        displayMaze(loadedMaze);
+    }
+
 
     /**
      * Initializing view model, scene and stage
@@ -86,6 +101,7 @@ public class MyViewController implements Observer,IView {
             y = viewModel.getCharecterColPos();
             mazeDisplayer.setCharecterPos(x, y);
             mazeDisplayer.setMaze(maze);
+            mazeDisplayer.draw();
         }
     }
 
@@ -109,7 +125,7 @@ public class MyViewController implements Observer,IView {
             if(viewModel.model.isAtTheEnd()){
                 Main.WinningView();
             }
-
+            mazeDisplayer.draw();//TODO NEW!!
         }
     }
 
@@ -119,9 +135,10 @@ public class MyViewController implements Observer,IView {
     private void bindAll()
     {
         gamePane.prefHeightProperty().bind(gameWin.heightProperty());
-        panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(200.0)*/));
+        panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(350)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
-        gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(280)*/);
+        gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(350)*/);
+
     }
 
     /**
@@ -151,12 +168,13 @@ public class MyViewController implements Observer,IView {
         if(viewModel==null) viewModel=Main.getViewModel();
         viewModel.generate(rows,cols);
         mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
-        mazeDisplayer.widthProperty().bind(gameWin.widthProperty());
+        mazeDisplayer.widthProperty().bind(gameWin.widthProperty().subtract(218));
         this.maze = viewModel.getMaze();
         displayMaze(this.maze);
         solveMaze.setDisable(false);
         saveMaze.setDisable(false);
         mazeDisplayer.requestFocus();
+        mazeDisplayer.draw();//TODO NEW!
 
     }
 
@@ -249,6 +267,7 @@ public class MyViewController implements Observer,IView {
     {
         if(showSolution) {
             viewModel.solve();
+            //Solution sol = Main.viewModel.model.getSolution();
             mazeDisplayer.setSolution(this.solution);
         }
     }
