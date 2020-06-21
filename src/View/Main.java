@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,7 +25,6 @@ import java.io.IOException;
 public class Main extends Application {
     public static MyViewModel viewModel;
     public static MyModel model;
-    public static MazeCharacter character;
     public static MainMenuViewControl menuControl;
     public static MediaPlayer player;
     private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,gameScene,alertScene,winningScene;
@@ -62,7 +62,7 @@ public class Main extends Application {
         gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
         gameFxmlLoader.load();
         winnerFxmlLoader = new FXMLLoader((getClass().getResource("../View/WinningView.fxml")));
-
+        winnerFxmlLoader.load();
         //Loading scenes
         aboutScene = new Scene(aboutFXML,800,600);
         alertScene = new Scene(alertFXML,500,250);
@@ -106,8 +106,9 @@ public class Main extends Application {
         File winningSongFile = new File("Resources/Music/winningSong.mp3");
         winningMusic = new MediaPlayer(new Media(winningSongFile.toURI().toString()));
         //winningMusic.play();TODO
-        //WinningViewControl winningControl = winnerFxmlLoader.getController();
-        //winningControl.updateBackground();
+        WinningViewControl winningControl = winnerFxmlLoader.getController();
+        System.out.println("winningControl: "+winningControl);
+        winningControl.updateBackground();
         winningStage.show();
 
     }
@@ -177,8 +178,12 @@ public class Main extends Application {
 
     }
 
+    public static void playAgain() throws IOException {
+    }
+
     public static void load() throws IOException {
-        File saveFile = new File("Resources/mulanGameSave.txt");
+        FileChooser fileChooser = new FileChooser();
+        File saveFile = fileChooser.showOpenDialog(null);
         saveFile.createNewFile(); // if file already exists will do nothing
         viewModel.model.loadMaze(saveFile);
     }
@@ -210,9 +215,10 @@ public class Main extends Application {
 
     //Winning handle
     public static void backToMainMenu() {
-        winningMusic.stop();
-        generalMusic.play();
+        //winningMusic.stop();
+        //generalMusic.play();
         winningStage.hide();
+        gameStage.hide();
         mainMenuStage.setScene(mainMenuScene);
         mainMenuStage.show();
     }
@@ -220,11 +226,19 @@ public class Main extends Application {
         winningMusic.stop();
         winningStage.hide();
         mainMenuStage.hide();
+        viewModel.model.init();
+        MazeCharacter mazeCharacter = viewModel.model.getLoadedCharacter();
+        viewModel.setCharacterImage(mazeCharacter.getCharacterName());
         play();
-
     }
 
     public static MyViewModel getViewModel(){return viewModel;}
+
+    @Override
+    public void stop(){
+        System.out.println("Stage is closing");
+        Main.viewModel.model.stopAllCommunication();
+    }
 
 }
 

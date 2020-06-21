@@ -7,9 +7,11 @@ public class MazeCharacter implements Serializable {
     private int characterRow;
     private int characterCol;
     private String characterDirection;
+    private String url;
 
     public MazeCharacter() {
-        characterName = "Mulan";
+        characterName = " Mulan ";
+        url = "/Images/MulanI.png";
         characterRow = 0;
         characterCol = 0;
         characterDirection = "front";
@@ -30,8 +32,9 @@ public class MazeCharacter implements Serializable {
         return characterName;
     }
 
-    public void setCharacterName(String characterName) {
+    public void setCharacter(String characterName, String url) {
         this.characterName = characterName;
+        this.url = url;
     }
 
     public int getCharacterRow() {

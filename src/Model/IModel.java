@@ -48,6 +48,7 @@ public interface IModel {
 
     MazeCharacter getLoadedCharacter();
 
-    //set player character for view
-    void setCharacter(String general_li_shang);
+    void setCharacter(String name, String url);
+
+    void init();
 }

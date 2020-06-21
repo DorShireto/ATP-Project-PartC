@@ -30,7 +30,7 @@ public class MyViewModel extends Observable implements Observer {
         this.charRowPosition = new SimpleStringProperty("0");
         this.charColPosition = new SimpleStringProperty("0");
         name=" Mulan ";
-
+        imageString.setValue("/Images/MulanI.png");
     }
 
     @Override
@@ -72,9 +72,24 @@ public class MyViewModel extends Observable implements Observer {
 
     public void movePlayer(KeyCode keyCode) { this.model.movePlayer(keyCode);  }
 
-    public void setCharacterImage(String name,String characterImage) {
-        this.name = name;
-        this.imageString.setValue(characterImage);  }
+    public void setCharacterImage(String charecter) {
+        this.name = charecter;
+        switch (charecter){
+            case " Mulan ":
+                imageString.setValue("/Images/MulanI.png");
+                break;
+            case " Mushu ":
+                imageString.setValue("/Images/MushuI.png");
+                break;
+            case " General Li Shang ":
+                imageString.setValue("/Images/LiShangI.png");
+                break;
+            case " Chien Po ":
+                imageString.setValue("/Images/FattyI.jpg");
+                break;
+        }
+        Main.viewModel.model.setCharacter(name,imageString.getValue());
+    }
 
     public void updateCharacterPosition(Position position)
     { // will be called from load game
@@ -85,5 +100,9 @@ public class MyViewModel extends Observable implements Observer {
 
     public String getCharacterName() {
         return name;
+    }
+
+    public String getCharacterPicPath() {
+        return imageString.getValue();
     }
 }

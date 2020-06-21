@@ -8,8 +8,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.*;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Observable;
@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -98,13 +99,16 @@ public class MyViewController implements Observer,IView {
     public void update(Observable o, Object arg) {
         if(o == viewModel)
         {
+            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
+            mazeDisplayer.setMaze(maze);
             displayMaze(viewModel.getMaze());
             generateMaze.setDisable(false);
             solution = viewModel.getSolution();
             charXPos = viewModel.getCharecterRowPos();
             charYPos = viewModel.getCharecterColPos();
-            endGame();
-
+            if(viewModel.model.isAtTheEnd()){
+                Main.WinningView();
+            }
 
         }
     }
@@ -118,14 +122,6 @@ public class MyViewController implements Observer,IView {
         panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(200.0)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
         gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(280)*/);
-        System.out.println("char image from Maze dis before bind:" + mazeDisplayer.characterImageProperty().toString());
-        System.out.println("char image from viewModel before bind:" + viewModel.imageString.toString());
-        viewModel.imageString.bindBidirectional(mazeDisplayer.characterImageProperty());
-
-        //mazeDisplayer.characterImageProperty().bind(viewModel.imageString);
-        System.out.println("char image from Maze dis after bind:" + mazeDisplayer.characterImageProperty().toString());
-        System.out.println("char image from viewModel after bind:" + viewModel.imageString.toString());
-
     }
 
     /**
@@ -196,15 +192,13 @@ public class MyViewController implements Observer,IView {
      * */
 
     public void saveMaze(){
+        FileChooser fileChooser = new FileChooser();
+        File saveFile = fileChooser.showSaveDialog(null);
+        System.out.println(saveFile.getAbsolutePath());
+
         try{
-            int currentX,currentY;
-            currentX = charXPos;
-            currentY = charYPos;
-            Position newStartingPos = new Position(currentX,currentY);
-            viewModel.getMaze().setStartPosition(newStartingPos);
-            FileOutputStream fos = new FileOutputStream("/Resource/mulanGameSave.txt");
-            byte[] mazeToByte = viewModel.getMaze().toByteArray();
-            fos.write(mazeToByte);
+            saveFile.createNewFile(); // if file already exists will do nothing
+            viewModel.model.saveCurrentMaze(saveFile,viewModel.getCharacterName());
         }
         catch (IOException e)
         {
@@ -222,6 +216,7 @@ public class MyViewController implements Observer,IView {
         //mainStage.hide();
         //Main.checkUser(); // check login confirmed
         Main.backFromGame();
+        Main.gameStage.hide();
         Main.mainMenuStage.show();
     }
 
@@ -238,6 +233,7 @@ public class MyViewController implements Observer,IView {
         Position currentPos = new Position(charXPos,charYPos);
         this.viewModel.getMaze().setStartPosition(currentPos);
         showSol();
+
     }
 
     public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
@@ -257,19 +253,6 @@ public class MyViewController implements Observer,IView {
         }
     }
 
-    /**
-     * Checking if player reached the goal position
-     * If so: moving to winning screen
-     * */
-    private void endGame()
-    { // checking if current location is at goal position
-        int goalX,goalY;
-        goalX = mazeDisplayer.maze.getGoalPosition().getRowIndex();
-        goalY = mazeDisplayer.maze.getGoalPosition().getColumnIndex();
-        if(charXPos == goalX && charYPos == goalY)
-            Main.WinningView();
-
-    }
 
 
 }

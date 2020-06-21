@@ -317,7 +317,7 @@ public class MyModel extends Observable implements IModel {
 
     private boolean isNotWall(int row, int col) {
         Position p =new  Position(row,col);
-        return (p.equals(maze.getStartPosition()) || p.equals(maze.getGoalPosition()) || maze.getMaze()[row][col] == 1);
+        return (p.equals(maze.getStartPosition()) || p.equals(maze.getGoalPosition()) || maze.getMaze()[row][col] == 0);
     }
 
     @Override
@@ -342,8 +342,15 @@ public class MyModel extends Observable implements IModel {
     }
 
     @Override
-    public void setCharacter(String name) {
-        this.mainCharacter.setCharacterName(name);
+    public void setCharacter(String name, String url) {
+        this.mainCharacter.setCharacter(name,url);
+    }
+
+    @Override
+    public void init() {
+        isAtTheEnd = false;
+        isSolved =true;
+        generateMaze(maze.getMaze()[0].length,maze.getMaze().length);
     }
 
 
