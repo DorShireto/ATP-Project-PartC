@@ -27,6 +27,7 @@ public class OptionsViewControl {
             if (generateAlgorithm != null){
                 myViewModel.setGenerateAlgorithm(generateAlgorithm);
             }
+            setCharacter();
         }
     }
 
@@ -77,19 +78,19 @@ public class OptionsViewControl {
         String charecter = charPicker.getValue().toString();
         switch (charecter){
             case " Mulan ":
-                myViewModel.setCharacterImage("/Images/MulanI.png");
+                myViewModel.setCharacterImage(" Mulan ","/Images/MulanI.png");
                 Main.model.setCharacter("Mulan");
                 break;
             case " Mushu ":
-                myViewModel.setCharacterImage("/Images/MushuI.png");
+                myViewModel.setCharacterImage(" Mushu ","/Images/MushuI.png");
                 Main.model.setCharacter("Mushu");
                 break;
             case " General Li Shang ":
-                myViewModel.setCharacterImage("/Images/LiShangI.png");
+                myViewModel.setCharacterImage(" General Li Shang ","/Images/LiShangI.png");
                 Main.model.setCharacter("General Li Shang");
                 break;
             case " Chien Po ":
-                myViewModel.setCharacterImage("/Images/FattyI.jpg");
+                myViewModel.setCharacterImage(" Chien Po ","/Images/FattyI.jpg");
                 Main.model.setCharacter("Chien Po");
                 break;
         }

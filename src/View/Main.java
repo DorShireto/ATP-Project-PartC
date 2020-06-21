@@ -106,8 +106,8 @@ public class Main extends Application {
         File winningSongFile = new File("Resources/Music/winningSong.mp3");
         winningMusic = new MediaPlayer(new Media(winningSongFile.toURI().toString()));
         //winningMusic.play();TODO
-        WinningViewControl winningControl = winnerFxmlLoader.getController();
-        winningControl.updateBackground();
+        //WinningViewControl winningControl = winnerFxmlLoader.getController();
+        //winningControl.updateBackground();
         winningStage.show();
 
     }
@@ -177,7 +177,10 @@ public class Main extends Application {
 
     }
 
-    public static void load() { //TODO
+    public static void load() throws IOException {
+        File saveFile = new File("Resources/mulanGameSave.txt");
+        saveFile.createNewFile(); // if file already exists will do nothing
+        viewModel.model.loadMaze(saveFile);
     }
 
     public static void loginDone(String userName) throws IOException {

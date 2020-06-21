@@ -20,6 +20,7 @@ public class MyViewModel extends Observable implements Observer {
 
     //Using StringProperty since those filled are been observed
     public StringProperty imageString,charRowPosition,charColPosition;
+    private String name;
 
     public MyViewModel(IModel model) {
         this.model = model;
@@ -28,6 +29,7 @@ public class MyViewModel extends Observable implements Observer {
         this.imageString = new SimpleStringProperty("1");
         this.charRowPosition = new SimpleStringProperty("0");
         this.charColPosition = new SimpleStringProperty("0");
+        name=" Mulan ";
 
     }
 
@@ -43,7 +45,6 @@ public class MyViewModel extends Observable implements Observer {
             setChanged();
             notifyObservers();
         }
-
 
     }
 
@@ -71,7 +72,9 @@ public class MyViewModel extends Observable implements Observer {
 
     public void movePlayer(KeyCode keyCode) { this.model.movePlayer(keyCode);  }
 
-    public void setCharacterImage(String characterImage) {  this.imageString.setValue(characterImage);  }
+    public void setCharacterImage(String name,String characterImage) {
+        this.name = name;
+        this.imageString.setValue(characterImage);  }
 
     public void updateCharacterPosition(Position position)
     { // will be called from load game
@@ -80,6 +83,7 @@ public class MyViewModel extends Observable implements Observer {
         this.model.setCharacterPosition(charRowPositionI,charColPositionI);
     }
 
-
-
+    public String getCharacterName() {
+        return name;
+    }
 }

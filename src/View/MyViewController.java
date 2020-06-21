@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Observable;
@@ -97,13 +98,16 @@ public class MyViewController implements Observer,IView {
     public void update(Observable o, Object arg) {
         if(o == viewModel)
         {
+            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
+            mazeDisplayer.setMaze(maze);
             displayMaze(viewModel.getMaze());
             generateMaze.setDisable(false);
             solution = viewModel.getSolution();
             charXPos = viewModel.getCharecterRowPos();
             charYPos = viewModel.getCharecterColPos();
-            endGame();
-
+            if(viewModel.model.isAtTheEnd()){
+                Main.WinningView();
+            }
 
         }
     }
@@ -196,14 +200,9 @@ public class MyViewController implements Observer,IView {
 
     public void saveMaze(){
         try{
-            int currentX,currentY;
-            currentX = charXPos;
-            currentY = charYPos;
-            Position newStartingPos = new Position(currentX,currentY);
-            viewModel.getMaze().setStartPosition(newStartingPos);
-            FileOutputStream fos = new FileOutputStream("/Resource/mulanGameSave.txt");
-            byte[] mazeToByte = viewModel.getMaze().toByteArray();
-            fos.write(mazeToByte);
+            File saveFile = new File("Resources/mulanGameSave.txt");
+            saveFile.createNewFile(); // if file already exists will do nothing
+            viewModel.model.saveCurrentMaze(saveFile,viewModel.getCharacterName());
         }
         catch (IOException e)
         {
@@ -237,6 +236,7 @@ public class MyViewController implements Observer,IView {
         Position currentPos = new Position(charXPos,charYPos);
         this.viewModel.getMaze().setStartPosition(currentPos);
         showSol();
+
     }
 
     public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
@@ -255,20 +255,5 @@ public class MyViewController implements Observer,IView {
             mazeDisplayer.setSolution(this.solution);
         }
     }
-
-    /**
-     * Checking if player reached the goal position
-     * If so: moving to winning screen
-     * */
-    private void endGame()
-    { // checking if current location is at goal position
-        int goalX,goalY;
-        goalX = mazeDisplayer.maze.getGoalPosition().getRowIndex();
-        goalY = mazeDisplayer.maze.getGoalPosition().getRowIndex();
-        if(charXPos == goalX && charYPos == goalY)
-            Main.WinningView();
-
-    }
-
 
 }

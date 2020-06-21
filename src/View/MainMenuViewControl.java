@@ -60,7 +60,7 @@ public class MainMenuViewControl {
         Main.play();
     }
 
-    public void loadGameButtonClicked(ActionEvent actionEvent) {
+    public void loadGameButtonClicked(ActionEvent actionEvent) throws IOException {
         Main.load();
     }
 }
