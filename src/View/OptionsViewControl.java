@@ -73,6 +73,13 @@ public class OptionsViewControl {
 
 
     public void saveClicked() {
+        if (solvingAlgorithm != null){
+            Main.viewModel.setSolvingAlgorithm(solvingAlgorithm);
+        }
+        if (generateAlgorithm != null){
+            Main.viewModel.setGenerateAlgorithm(generateAlgorithm);
+        }
+
         String charecter = charPicker.getValue().toString();
         Main.viewModel.setCharacterImage(charecter);
         Main.showMainScreen();

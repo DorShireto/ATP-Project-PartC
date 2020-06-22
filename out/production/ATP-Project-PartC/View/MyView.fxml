@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="gameWin" prefHeight="482.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController" style=" -fx-border-color: #51d4e8; -fx-background-image: url(Images/menu.jpg);-fx-background-size: stretch;">
+<AnchorPane fx:id="gameWin" prefHeight="482.0" prefWidth="700.0" style=" -fx-border-color: #51d4e8; -fx-background-image: url(Images/menu.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
     <children>
       <Pane fx:id="gamePane" layoutX="218.0" layoutY="3.0" prefHeight="481.0" prefWidth="482.0">
          <children>
-             <MazeDisplayer fx:id="mazeDisplayer"  disable="true" height="481.0" layoutX="-2.0" layoutY="-1.0" onKeyPressed="#keyPadPress" onMouseClicked="#mouseClicked" width="482.0" />
+             <MazeDisplayer fx:id="mazeDisplayer" disable="true" height="481.0" layoutX="-2.0" layoutY="-1.0" onKeyPressed="#keyPadPress" onMouseClicked="#mouseClicked" width="482.0" />
          </children></Pane>
-      <Pane prefHeight="482.0" prefWidth="211.0">
+      <Pane prefHeight="482.0" prefWidth="211.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
                   <GridPane fx:id="panel" layoutX="3.0" layoutY="76.0" prefHeight="330.0" prefWidth="205.0">
                       <columnConstraints>

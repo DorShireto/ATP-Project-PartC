@@ -264,6 +264,7 @@ public class Main extends Application {
     public static void restartGame() throws IOException {
         winningMusic.stop();
         winningStage.hide();
+        gameStage.hide();
         mainMenuStage.hide();
         viewModel.model.init();
         MazeCharacter mazeCharacter = viewModel.model.getLoadedCharacter();

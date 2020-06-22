@@ -126,7 +126,7 @@ public class MazeDisplayer extends Canvas {
                         //gc.fillRect(i * cellHeight, j * cellWidth, cellHeight, cellWidth);
                         gc.drawImage(wall, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                     }else{
-                        gc.setFill(javafx.scene.paint.Color.BLACK);//TODO:
+                        gc.setFill(javafx.scene.paint.Color.TRANSPARENT);//TODO:
                         //gc.fillRect(charRowIndex * cellWidth, charColIndex * cellHeight, cellWidth, cellHeight);
                         gc.fillRect( j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                     }
@@ -224,6 +224,22 @@ public class MazeDisplayer extends Canvas {
 
         //draw(); TODO NEW
         //drawChar();
+    }
+
+    public void Zoom() {
+        setOnScroll(event -> {
+            if (event.isControlDown()) {
+                double change = event.getDeltaY();
+                double zoomConst = 1.03;
+                if (change < 0) {
+                    zoomConst = 0.97;
+                }
+
+                setScaleY(getScaleY() * zoomConst);
+                setScaleX(getScaleX() * zoomConst);
+                event.consume();
+            }
+        });
     }
 
 

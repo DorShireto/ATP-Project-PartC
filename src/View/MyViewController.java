@@ -18,6 +18,7 @@ import java.util.Observer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -68,7 +69,7 @@ public class MyViewController implements Observer,IView {
      * Initializing view model, scene and stage
      * Function will be called from menu after starting a new game or loading one
      * */
-    public void init(MyViewModel viewModel,Scene gameScene, Stage mainStage)
+    public void init(MyViewModel viewModel, Scene gameScene, Stage mainStage)
     {
         mazeColField.clear();
         mazeRowField.clear();
@@ -191,10 +192,13 @@ public class MyViewController implements Observer,IView {
      * On-Action function for Solve button
      * */
     public void solveMaze(){
-        showSolution = !showSolution;
-        if(showSolution){
+
+        if(!showSolution){showSolution = true;}
+        else {
+            showSolution = false;
             mazeDisplayer.draw();
-        }        showSol();
+        }
+        showSol();
         mazeDisplayer.requestFocus();
     }
 
@@ -238,13 +242,18 @@ public class MyViewController implements Observer,IView {
      * By doing that, it will allow us to present the solution path from the current cell
      * */
     public void keyPadPress(javafx.scene.input.KeyEvent ke) { // sending to view model the wanted move
-        viewModel.movePlayer(ke.getCode());
-        // Pause listener, updating location
-        ke.consume();
-        Position currentPos = new Position(charXPos,charYPos);
-        this.viewModel.getMaze().setStartPosition(currentPos);
-        showSol();
-
+        if(ke.getCode() == KeyCode.CONTROL)
+        {
+            mazeDisplayer.Zoom();
+        }
+        else{
+            viewModel.movePlayer(ke.getCode());
+            // Pause listener, updating location
+            ke.consume();
+            Position currentPos = new Position(charXPos, charYPos);
+            this.viewModel.getMaze().setStartPosition(currentPos);
+            showSol();
+        }
     }
 
     public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
