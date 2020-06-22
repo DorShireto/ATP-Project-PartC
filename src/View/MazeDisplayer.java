@@ -46,6 +46,10 @@ public class MazeDisplayer extends Canvas {
     public MazeDisplayer(){
         widthProperty().addListener(e->draw());
         heightProperty().addListener(e->draw());
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.clearRect(0,0,canvasWidth,canvasHeight);
+
+
     }
     // General properties
     @Override
@@ -149,6 +153,42 @@ public class MazeDisplayer extends Canvas {
             }
         }
     }
+
+
+    public void redraw(){
+        System.out.println(counter);
+        counter++;
+        if(maze!=null)
+        {
+            canvasHeight = getHeight();
+            System.out.println("canvasHeight = " + canvasHeight);
+            canvasWidth = getWidth();
+            System.out.println("canvasWidth = " + canvasWidth);
+            int row = arrMaze.length;
+            int col = arrMaze[0].length;
+            cellHeight = canvasHeight/row;
+            cellWidth = canvasWidth/col;
+
+            try{
+                GraphicsContext gc = getGraphicsContext2D();
+                gc.clearRect(0,0,canvasWidth,canvasHeight);
+                gc.setFill(javafx.scene.paint.Color.TRANSPARENT);
+            //Draw maze
+                for (int i = 0; i < arrMaze.length; i++) {
+                    for (int j = 0; j < arrMaze[i].length; j++) {
+                            gc.fillRect( j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                        }
+                    }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
     public void setSolution(Solution solution) {
         if(solution!=null)
         {

@@ -66,21 +66,16 @@ public class Main extends Application {
         winningFXML = FXMLLoader.load(getClass().getResource("../View/WinningView.fxml"));
         winnerFxmlLoader = new FXMLLoader((getClass().getResource("../View/WinningView.fxml")));
         winnerFxmlLoader.load();
-
-
-////////////////////////
-        gameFXML = FXMLLoader.load(getClass().getResource("../View/MyView.fxml"));
         gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
-        gameFxmlLoader.load();
-        gameScene = new Scene(gameFXML,700,482);
+        gameFXML = gameFxmlLoader.load();
 
-// ////////////////////
 
         //Loading scenes
+        gameScene = new Scene(gameFXML,800,600);
         aboutScene = new Scene(aboutFXML,800,600);
         alertScene = new Scene(alertFXML,500,250);
-        helpScene = new Scene(helpFXML,800,484);
-        loginScene = new Scene(loginFXML,600,400);
+        helpScene = new Scene(helpFXML,800,600);
+        loginScene = new Scene(loginFXML,800,600);
         optionsScene = new Scene(optionFXML,800,600);
         winningScene = new Scene(winningFXML,600,400);
 
@@ -103,6 +98,7 @@ public class Main extends Application {
 
 
         mainMenuStage.setScene(loginScene);
+        mainMenuStage.setResizable(false);
         mainMenuStage.show();
 
     }
@@ -160,6 +156,7 @@ public class Main extends Application {
 
 
     public static void play() throws IOException {
+
         //loading game stage and scene
         gameStage = new Stage();
         gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
@@ -257,6 +254,7 @@ public class Main extends Application {
     public static void backToMainMenu() {
         //winningMusic.stop();
         //generalMusic.play();
+        viewModel.model.initForMain();
         gameStage.close();
         winningStage.hide();
         gameStage.hide();

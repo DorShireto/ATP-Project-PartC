@@ -13,6 +13,7 @@ public class LoginViewControl {
     private TextField userID;
 
 
+
     public void exit(ActionEvent actionEvent) {
 
         Main.viewModel.model.stopAllCommunication();

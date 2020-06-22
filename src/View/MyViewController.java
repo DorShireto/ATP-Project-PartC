@@ -70,6 +70,10 @@ public class MyViewController implements Observer,IView {
      * */
     public void init(MyViewModel viewModel,Scene gameScene, Stage mainStage)
     {
+        mazeColField.clear();
+        mazeRowField.clear();
+        mazeDisplayer.redraw();
+
         if(viewModel != null && gameScene != null && mainStage != null)
         {
             this.viewModel = viewModel;
@@ -125,6 +129,7 @@ public class MyViewController implements Observer,IView {
             charYPos = viewModel.getCharecterColPos();
             if(viewModel.model.isAtTheEnd()){
                 Main.WinningView();
+                return;
             }
 //            System.out.println("GOT TO NADAV POS");
             mazeDisplayer.draw();//TODO NEW!!
@@ -137,7 +142,7 @@ public class MyViewController implements Observer,IView {
     private void bindAll()
     {
         gamePane.prefHeightProperty().bind(gameWin.heightProperty());
-        panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(350)*/));
+        //panel.layoutYProperty().bind((gameWin.heightProperty()/*.subtract(350)*/));
         gameWin.prefHeightProperty().bind(mainStage.heightProperty()/*.subtract(30)*/);
         gameWin.prefWidthProperty().bind(mainStage.widthProperty()/*.subtract(350)*/);
 
@@ -169,6 +174,7 @@ public class MyViewController implements Observer,IView {
         }
         if(viewModel==null) viewModel=Main.getViewModel();
         viewModel.generate(rows,cols);
+        mazeDisplayer.setDisable(false);
         mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
         mazeDisplayer.widthProperty().bind(gameWin.widthProperty().subtract(218));
         this.maze = viewModel.getMaze();

@@ -81,7 +81,7 @@ public class MyModel extends Observable implements IModel {
                         }
                     });
             clientMazeGenerator.communicateWithServer();
-            mainCharacter = new MazeCharacter(maze.getStartPosition().getRowIndex(),maze.getStartPosition().getColumnIndex());
+            mainCharacter.setCharacterPosition(maze.getStartPosition().getRowIndex(),maze.getStartPosition().getColumnIndex());
             isAtTheEnd = false;
             setChanged();
             notifyObservers("Maze");
@@ -349,11 +349,19 @@ public class MyModel extends Observable implements IModel {
 
     @Override
     public void init() {
+
         isAtTheEnd = false;
-        isSolved =true;
+        isSolved =false;
+
         generateMaze(maze.getMaze()[0].length,maze.getMaze().length);
     }
 
+    @Override
+    public void initForMain() {
+        isAtTheEnd = false;
+        isSolved =false;
+
+    }
 
     @Override
     public Maze getMaze() {

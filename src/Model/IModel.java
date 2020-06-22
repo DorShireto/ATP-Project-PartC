@@ -51,4 +51,6 @@ public interface IModel {
     void setCharacter(String name, String url);
 
     void init();
+
+    void initForMain();
 }
