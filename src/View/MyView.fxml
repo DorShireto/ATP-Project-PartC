@@ -11,7 +11,7 @@
          <children>
              <MazeDisplayer fx:id="mazeDisplayer" height="481.0" layoutX="-2.0" layoutY="-1.0" onKeyPressed="#keyPadPress" onMouseClicked="#mouseClicked" width="482.0" />
          </children></Pane>
-      <Pane prefHeight="482.0" prefWidth="218.0">
+      <Pane prefHeight="482.0" prefWidth="211.0">
          <children>
                   <GridPane fx:id="panel" layoutX="3.0" layoutY="76.0" prefHeight="330.0" prefWidth="205.0">
                       <columnConstraints>

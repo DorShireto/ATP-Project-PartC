@@ -28,14 +28,19 @@ public class Main extends Application {
     public static MyModel model;
     public static MainMenuViewControl menuControl;
     public static MediaPlayer player;
-    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,gameScene,alertScene,winningScene;
+    private static Scene mainMenuScene,helpScene,aboutScene,optionsScene,alertScene,winningScene;
     private Scene loginScene;
-    public Parent aboutFXML,alertFXML,helpFXML,loginFXML,mainMenuFXML,gameFXML,optionFXML,winningFXML;
-    public static Stage mainMenuStage,alertStage,gameStage,winningStage;
+    public Parent aboutFXML,alertFXML,helpFXML,loginFXML,mainMenuFXML,optionFXML,winningFXML,gameFXML;
+    public static Stage mainMenuStage,alertStage,winningStage;
     public static MediaPlayer generalMusic,gameMusic,winningMusic;
-    public static FXMLLoader gameFxmlLoader,winnerFxmlLoader;
+    public static FXMLLoader winnerFxmlLoader;
     //public static StringProperty wall,backGround,characterImage;
 
+    /////
+    public static Stage gameStage;
+    public static Scene gameScene;
+    public static FXMLLoader gameFxmlLoader;
+    /////
 
 
 
@@ -57,19 +62,25 @@ public class Main extends Application {
         helpFXML = FXMLLoader.load(getClass().getResource("../View/HelpView.fxml"));
         loginFXML = FXMLLoader.load(getClass().getResource("../View/LoginView.fxml"));
         mainMenuFXML= FXMLLoader.load(getClass().getResource("../View/MainMenuView.fxml"));
-        gameFXML = FXMLLoader.load(getClass().getResource("../View/MyView.fxml"));
         optionFXML= FXMLLoader.load(getClass().getResource("../View/OptionView.fxml"));
         winningFXML = FXMLLoader.load(getClass().getResource("../View/WinningView.fxml"));
-        gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
-        gameFxmlLoader.load();
         winnerFxmlLoader = new FXMLLoader((getClass().getResource("../View/WinningView.fxml")));
         winnerFxmlLoader.load();
+
+
+////////////////////////
+        gameFXML = FXMLLoader.load(getClass().getResource("../View/MyView.fxml"));
+        gameFxmlLoader = new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
+        gameFxmlLoader.load();
+        gameScene = new Scene(gameFXML,700,482);
+
+// ////////////////////
+
         //Loading scenes
         aboutScene = new Scene(aboutFXML,800,600);
         alertScene = new Scene(alertFXML,500,250);
         helpScene = new Scene(helpFXML,800,484);
         loginScene = new Scene(loginFXML,600,400);
-        gameScene = new Scene(gameFXML,700,482);
         optionsScene = new Scene(optionFXML,800,600);
         winningScene = new Scene(winningFXML,600,400);
 
@@ -84,7 +95,7 @@ public class Main extends Application {
         //model.runMyServer();
         viewModel = new MyViewModel(model);
         model.addObserver(viewModel);
-
+        //viewModel.addObserver(gameFxmlLoader.getController()); //TODO: Dor added, I think we need this? (still no change)
         //start music TODO
         //File musicPath = new File("Resources/Music/menusMusic.mp3");
         //generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
@@ -153,6 +164,8 @@ public class Main extends Application {
         gameStage = new Stage();
         gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
         gameStage.setScene(gameScene);
+
+
         MyViewController myViewController = gameFxmlLoader.getController();
         myViewController.init(viewModel,gameScene,gameStage);
         viewModel.addObserver(myViewController);

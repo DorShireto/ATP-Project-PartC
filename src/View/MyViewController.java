@@ -27,6 +27,7 @@ import javafx.stage.WindowEvent;
 
 
 public class MyViewController implements Observer,IView {
+    @FXML
     public  MazeDisplayer mazeDisplayer;
     private MyViewModel viewModel;
     @FXML
@@ -115,8 +116,8 @@ public class MyViewController implements Observer,IView {
     public void update(Observable o, Object arg) {
         if(o == viewModel)
         {
-            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
-            mazeDisplayer.setMaze(maze);
+//            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
+//            mazeDisplayer.setMaze(maze);
             displayMaze(viewModel.getMaze());
             generateMaze.setDisable(false);
             solution = viewModel.getSolution();
@@ -125,6 +126,7 @@ public class MyViewController implements Observer,IView {
             if(viewModel.model.isAtTheEnd()){
                 Main.WinningView();
             }
+//            System.out.println("GOT TO NADAV POS");
             mazeDisplayer.draw();//TODO NEW!!
         }
     }
