@@ -190,6 +190,7 @@ public class MazeDisplayer extends Canvas {
 
 
     public void setSolution(Solution solution) {
+        System.out.println("sol; "+solution);
         if(solution!=null)
         {
             this.solution = solution;
@@ -197,6 +198,7 @@ public class MazeDisplayer extends Canvas {
         }
     }
     private void printSolution() {
+        System.out.println("printSolution");
         canvasHeight = getHeight();
         canvasWidth = getWidth();
         cellHeight = canvasHeight/arrMaze.length;
@@ -205,20 +207,15 @@ public class MazeDisplayer extends Canvas {
         Image trophy = new Image("/Images/trophy.png");
         GraphicsContext graphicsContext = getGraphicsContext2D();
         int pathSize = solution.getSolutionPath().size();
-        for(int index = 0; index > pathSize; index++)
-        {
+        for(int index = 0; index < pathSize; index++) {
             int rowIndex,colIndex;
             rowIndex = ((MazeState)solution.getSolutionPath().get(index)).getMyState().getRowIndex();
             colIndex = ((MazeState)solution.getSolutionPath().get(index)).getMyState().getColumnIndex();
-            if(index != pathSize-1)
-            {// charcarter not in the final position
-                graphicsContext.drawImage(characterImage,rowIndex*cellWidth,colIndex*cellHeight,cellWidth,cellWidth);
-            }
-            else{ //Character at final position,
-                graphicsContext.drawImage(trophy,rowIndex*cellWidth,colIndex*cellHeight,cellWidth,cellWidth);
-            }
+            graphicsContext.drawImage(index < pathSize-1 ?characterImage:trophy ,colIndex*cellWidth,rowIndex*cellHeight,cellWidth,cellWidth);
         }
     }
+
+
     public void setCharecterPos(int x, int y) {
 //        System.out.println("char before change " + charRowIndex + " , " + charColIndex);
         this.charRowIndex = x;

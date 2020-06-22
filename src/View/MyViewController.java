@@ -186,30 +186,15 @@ public class MyViewController implements Observer,IView {
 
     }
 
-    /**
-     * Help function - called from solveMaze after Solve button was clicked,
-     * Function changing the current Boolean value of showSolution
-     * */
-    private void updateSolve()
-    {
-        if(!showSolution){
-            showSolution = true;
-        }
-        else
-        {
-            showSolution = false;
-            mazeDisplayer.draw();
-        }
-        return;
-    }
-
 
     /**
      * On-Action function for Solve button
      * */
     public void solveMaze(){
-        updateSolve();
-        showSol();
+        showSolution = !showSolution;
+        if(showSolution){
+            mazeDisplayer.draw();
+        }        showSol();
         mazeDisplayer.requestFocus();
     }
 
@@ -275,7 +260,7 @@ public class MyViewController implements Observer,IView {
     {
         if(showSolution) {
             viewModel.solve();
-            //Solution sol = Main.viewModel.model.getSolution();
+            solution = Main.viewModel.model.getSolution();
             mazeDisplayer.setSolution(this.solution);
         }
     }

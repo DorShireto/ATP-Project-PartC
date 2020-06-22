@@ -204,13 +204,13 @@ public class MyModel extends Observable implements IModel {
 
     @Override
     public void solve() {
-        if (!isSolved)
-            isSolved = true;
-        else {
+
+        if (isSolved) {
             serverSolveMaze.stop();
             serverSolveMaze = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
+            isSolved = false;
         }
-        serverSolveMaze.start();
+
         try {
             Client clientSolveMaze = new Client(InetAddress.getLocalHost(), 5401,
                     (inFromServer, outToServer) -> {

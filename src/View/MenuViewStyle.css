@@ -13,6 +13,8 @@
 }
 
 .button:hover{
-    -fx-background-color: #4a4a4a;
+    -fx-background-image: url("/Images/buttonHover.png") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
 }
 

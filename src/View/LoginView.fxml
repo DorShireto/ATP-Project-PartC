@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="881.0" style="-fx-background-color: #353535; -fx-border-color: #51d4e8; -fx-background-image: url(Images/login.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginViewControl">
-   <GridPane layoutX="576.0" layoutY="142.0" prefHeight="309.0" prefWidth="373.0" vgap="25.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="400.0">
+   <GridPane layoutX="576.0" layoutY="142.0" prefHeight="309.0" prefWidth="373.0" vgap="25.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="200.0">
       <ImageView GridPane.columnIndex="0" GridPane.rowIndex="0">
          <image>
             <Image backgroundLoading="true" requestedHeight="70" requestedWidth="450" url="/Images/pleasetext.png" />
