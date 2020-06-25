@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/Images/about.png) ; -fx-background-size: cover;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutViewControl">
    <Button fx:id="backB" layoutX="640.0" layoutY="519.0" mnemonicParsing="false" onAction="#backC" prefHeight="48.0" prefWidth="125.0" style="-fx-background-image: url(/Images/back.png) ; -fx-background-size: cover  ;    -fx-background-color: transparent;"/>

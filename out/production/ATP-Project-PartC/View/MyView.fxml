@@ -5,14 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="gameWin" prefHeight="482.0" prefWidth="700.0" style=" -fx-border-color: #51d4e8; -fx-background-image: url(Images/play.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<AnchorPane fx:id="gameWin" prefHeight="482.0" prefWidth="700.0" style=" -fx-border-color: #51d4e8; -fx-background-image: url(Images/play.jpg);-fx-background-size: stretch;" stylesheets="@MyView.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
     <children>
-        <Pane fx:id="gamePane" layoutX="218.0" layoutY="1.0" prefHeight="482.0" prefWidth="482.0" style="-fx-background-color: transparent;">
-            <children>
-                <MazeDisplayer fx:id="mazeDisplayer" disable="true" height="482.0" layoutX="-2.0" layoutY="-1.0" onKeyPressed="#keyPadPress" onMouseClicked="#mouseClicked" width="482.0" />
-            </children>
-        </Pane>
-      <Pane layoutX="-6.0" layoutY="2.0" prefHeight="482.0" prefWidth="217.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="-7.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="scrollPane" layoutX="216.0" stylesheets="@MyView.css" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+         <content>
+              <Pane fx:id="gamePane" prefHeight="482.0" prefWidth="482.0" style="-fx-background-color: transparent;" stylesheets="@MyView.css">
+                  <children>
+                      <MazeDisplayer fx:id="mazeDisplayer" disable="true" height="482.0" layoutX="-2.0" layoutY="-1.0" onKeyPressed="#keyPadPress" onMouseClicked="#mouseClicked" width="482.0" />
+                  </children>
+              </Pane>
+         </content>
+      </ScrollPane>
+      <Pane layoutX="-6.0" layoutY="2.0" prefHeight="482.0" prefWidth="217.0" stylesheets="@MyView.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="-7.0" AnchorPane.topAnchor="0.0">
          <children>
                   <GridPane fx:id="panel" layoutX="3.0" layoutY="116.0" prefHeight="339.0" prefWidth="206.0">
 

@@ -233,9 +233,6 @@ public class MyViewController implements Observer,IView {
      * Stopping music and moving back to main screen
      * */
     public void backButton(ActionEvent e){
-        //Main.player.stop(); TODO: unable when music is on!
-        //mainStage.hide();
-        //Main.checkUser(); // check login confirmed
         Main.backFromGame();
         Main.gameStage.hide();
         Main.mainMenuStage.show();

@@ -92,7 +92,6 @@ public class MazeDisplayer extends Canvas {
 
             for (int i = 0; i < arrMaze.length; i++) {
             for (int j = 0; j < arrMaze[i].length; j++) {
-                gc.setFill(javafx.scene.paint.Color.BLACK);//TODO:
                 gc.drawImage(BGIcon, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                 }
             }
