@@ -1,0 +1,2 @@
+Please make sure your parameters are correct!
+Maze height and width must be positive number bigger than 2

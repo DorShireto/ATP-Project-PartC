@@ -18,6 +18,7 @@ public class OptionsViewControl {
 
     public void init(MyViewModel myViewModel)
     {
+
         if (myViewModel!=null){
             if (solvingAlgorithm != null){
                 myViewModel.setSolvingAlgorithm(solvingAlgorithm);
@@ -30,44 +31,44 @@ public class OptionsViewControl {
     }
 
     public void dfsA() {
-        DFS.setStyle("-fx-background-color: #3434eb; ");
-        BFS.setStyle("-fx-background-color: #a7a7a8; ");
-        BestFS.setStyle("-fx-background-color: #a7a7a8; ");
+        DFS.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        BFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        BestFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         solvingAlgorithm = "DepthFirstSearch";
     }
 
     public void bfsA() {
-        DFS.setStyle("-fx-background-color: #a7a7a8; ");
-        BFS.setStyle("-fx-background-color: #3434eb; ");
-        BestFS.setStyle("-fx-background-color: #a7a7a8; ");
+        BFS.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        DFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        BestFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         solvingAlgorithm = "BreadthFirstSearch";
     }
 
     public void bestA() {
-        DFS.setStyle("-fx-background-color: #a7a7a8; ");
-        BFS.setStyle("-fx-background-color: #a7a7a8; ");
-        BestFS.setStyle("-fx-background-color: #3434eb; ");
+        BestFS.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        BFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        DFS.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         solvingAlgorithm = "BestFirstSearch";
     }
 
     public void simpleMazeC() {
-        simpleM.setStyle("-fx-background-color: #3434eb; ");
-        myM.setStyle("-fx-background-color: #a7a7a8; ");
-        emptyM.setStyle("-fx-background-color: #a7a7a8; ");
+        simpleM.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        myM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        emptyM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         generateAlgorithm = "SimpleMazeGenerator";
     }
 
     public void myMazeC() {
-        simpleM.setStyle("-fx-background-color: #a7a7a8; ");
-        myM.setStyle("-fx-background-color: #3434eb; ");
-        emptyM.setStyle("-fx-background-color: #a7a7a8; ");
+        myM.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        simpleM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        emptyM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         generateAlgorithm = "MyMazeGenerator";
     }
 
     public void emptyMazeC() {
-        simpleM.setStyle("-fx-background-color: #a7a7a8; ");
-        myM.setStyle("-fx-background-color: #a7a7a8; ");
-        emptyM.setStyle("-fx-background-color: #3434eb; ");
+        emptyM.setStyle("-fx-background-image: url(/Images/redStone.png) no-repeat; ");
+        myM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
+        simpleM.setStyle("-fx-background-image: url(/Images/stoneButton.png) no-repeat; ");
         generateAlgorithm = "EmptyMazeGenerator";
     }
 

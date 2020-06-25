@@ -17,8 +17,11 @@ import java.util.Observer;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -30,6 +33,7 @@ import javafx.stage.WindowEvent;
 public class MyViewController implements Observer,IView {
     @FXML
     public  MazeDisplayer mazeDisplayer;
+    public ScrollPane sBar;
     private MyViewModel viewModel;
     @FXML
     public AnchorPane gameWin;
@@ -46,23 +50,11 @@ public class MyViewController implements Observer,IView {
     public Button generateMaze;
     private Solution solution;
     private Scene gameScene;
+
     public boolean showSolution;
     int charXPos,charYPos;
     private Maze maze;
 
-
-
-    public void load(){
-
-        Maze loadedMaze = viewModel.getMaze();
-        System.out.println("mazeDisplayer Height and Width before: " + mazeDisplayer.heightProperty().getValue() + " X " + mazeDisplayer.widthProperty().getValue());
-        System.out.println("gameWin Height and Width before: " + gameWin.heightProperty() + " X " + gameWin.widthProperty().subtract(218));
-        mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
-        mazeDisplayer.widthProperty().bind(gameWin.widthProperty().subtract(218));
-        System.out.println("mazeDisplayer Height and Width after: " + mazeDisplayer.heightProperty() + " X " + mazeDisplayer.widthProperty());
-        System.out.println("gameWin Height and Width after: " + gameWin.heightProperty() + " X " + gameWin.widthProperty().subtract(218));
-        displayMaze(loadedMaze);
-    }
 
 
     /**
@@ -121,8 +113,7 @@ public class MyViewController implements Observer,IView {
     public void update(Observable o, Object arg) {
         if(o == viewModel)
         {
-//            mazeDisplayer.setCharecterPos(viewModel.getCharecterRowPos(), viewModel.getCharecterColPos());
-//            mazeDisplayer.setMaze(maze);
+
             displayMaze(viewModel.getMaze());
             generateMaze.setDisable(false);
             solution = viewModel.getSolution();
@@ -132,8 +123,7 @@ public class MyViewController implements Observer,IView {
                 Main.WinningView();
                 return;
             }
-//            System.out.println("GOT TO NADAV POS");
-            mazeDisplayer.draw();//TODO NEW!!
+            mazeDisplayer.draw();
         }
     }
 
@@ -168,25 +158,42 @@ public class MyViewController implements Observer,IView {
             Main.showAlert();
             return;
         }
-        if(rows < 2 || cols <2)
+        if(rows < 2 || cols <2 || rows > 500 || cols >500)
         {
             Main.showAlert();
             return;
         }
         if(viewModel==null) viewModel=Main.getViewModel();
         viewModel.generate(rows,cols);
+        drawFirst();
+    }
+
+    /**
+     * Help function - called from Main.Load()
+     * setting up needed bindings and loading the maze
+     * */
+
+    public void drawFirst(){
         mazeDisplayer.setDisable(false);
         mazeDisplayer.heightProperty().bind(gameWin.heightProperty());
         mazeDisplayer.widthProperty().bind(gameWin.widthProperty().subtract(218));
         this.maze = viewModel.getMaze();
-        displayMaze(this.maze);
         solveMaze.setDisable(false);
         saveMaze.setDisable(false);
+        displayMaze(this.maze);
         mazeDisplayer.requestFocus();
-        mazeDisplayer.draw();//TODO NEW!
-
+        mazeDisplayer.draw();
     }
 
+
+    /** save Maze Button getter*/
+    public Button getSaveMaze() {
+        return saveMaze;
+    }
+    /** solve Maze Button getter*/
+    public Button getSolveMaze() {
+        return solveMaze;
+    }
 
     /**
      * On-Action function for Solve button
@@ -209,15 +216,14 @@ public class MyViewController implements Observer,IView {
     public void saveMaze(){
         FileChooser fileChooser = new FileChooser();
         File saveFile = fileChooser.showSaveDialog(null);
-        System.out.println(saveFile.getAbsolutePath());
 
         try{
             saveFile.createNewFile(); // if file already exists will do nothing
             viewModel.model.saveCurrentMaze(saveFile,viewModel.getCharacterName());
         }
-        catch (IOException e)
+        catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println("Failed to save maze");
         }
 
     }
@@ -243,10 +249,10 @@ public class MyViewController implements Observer,IView {
      * */
     public void keyPadPress(javafx.scene.input.KeyEvent ke) { // sending to view model the wanted move
         if(ke.getCode() == KeyCode.CONTROL)
-        {
+        { // Zoom in and out option
             mazeDisplayer.Zoom();
         }
-        else{
+        else{ // // Character movement option
             viewModel.movePlayer(ke.getCode());
             // Pause listener, updating location
             ke.consume();
@@ -256,8 +262,10 @@ public class MyViewController implements Observer,IView {
         }
     }
 
+    /** Handle all unnecessary mouse clicks */
     public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
         //click have no meaning
+
         mazeDisplayer.requestFocus();
 
     }

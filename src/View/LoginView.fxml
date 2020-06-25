@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="881.0" style="-fx-background-color: #353535; -fx-border-color: #51d4e8; -fx-background-image: url(Images/login.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginViewControl">
-   <GridPane layoutX="576.0" layoutY="142.0" prefHeight="309.0" prefWidth="373.0" vgap="25.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="200.0">
-      <ImageView GridPane.columnIndex="0" GridPane.rowIndex="0">
-         <image>
-            <Image backgroundLoading="true" requestedHeight="70" requestedWidth="450" url="/Images/pleasetext.png" />
-         </image>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="881.0" style="-fx-background-color: #353535; -fx-border-color: #51d4e8; -fx-background-image: url(Images/login.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginViewControl">
+   <GridPane layoutX="402.0" layoutY="202.0" prefHeight="129.0" prefWidth="449.0" vgap="25.0" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="401.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="201.0">
+      <ImageView fitHeight="54.0" fitWidth="393.0">
+         <Image requestedHeight="70" requestedWidth="450" url="@/Images/pleasetext.png" />
       </ImageView>
-      <TextField fx:id="userID" layoutX="525.0" layoutY="287.0" prefHeight="34.0" prefWidth="200.0" promptText="Enter Your Name" style="centerShape: true;  -fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 20; -fx-text-fill: #ffff; -fx-font-family: 'Lucida Handwriting';" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      <Button fx:id="letPlayB" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="125" prefWidth="320" style="-fx-background-image: url(/Images/letPlayButton.png);  -fx-background-color: transparent; -fx-background-size: cover;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <TextField fx:id="userID" layoutX="525.0" layoutY="287.0" prefHeight="48.0" prefWidth="184.0" promptText="Enter Your Name" style="centerShape: true; -fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 20; -fx-text-fill: black; -fx-font-family: 'Lucida Handwriting';" GridPane.columnIndex="0" GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
 
       <columnConstraints>
          <ColumnConstraints />
@@ -28,4 +24,5 @@
          <RowConstraints />
       </rowConstraints>
    </GridPane>
+   <Button fx:id="letPlayB" contentDisplay="RIGHT" layoutX="545.0" layoutY="329.0" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="138.0" prefWidth="242.0" style="-fx-background-image: url(/Images/letPlayButton.png);   -fx-background-repeat: no-repeat;   -fx-background-color: transparent;  -fx-background-size: 200px 100px; " />
 </AnchorPane>

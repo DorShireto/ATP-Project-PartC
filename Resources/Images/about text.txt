@@ -1,0 +1,4 @@
+Official product by DTgames
+The Algorithm that been chosen to develop and generate the mazes is Prim Algorithm
+The Algorithms that been chosen to solve the mazes are DFS, BFS, BestFS
+Developed by Dor S. and Tair S.

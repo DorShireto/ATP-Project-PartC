@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="backG" prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.WinningViewControl">
+<AnchorPane fx:id="backG" prefHeight="400.0" prefWidth="570.0" style="-fx-background-color: #353535; -fx-border-color: #51d4e8; -fx-background-image: url(Images/winner.jpg);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.WinningViewControl">
    <children>
-      <Text layoutX="198.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations You Won!">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Text>
-      <Button fx:id="playAgainB" layoutX="143.0" layoutY="237.0" mnemonicParsing="false" onAction="#playAgainClicked" prefHeight="36.0" prefWidth="110.0" text="Play again!">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="backB" layoutX="334.0" layoutY="237.0" mnemonicParsing="false" onAction="#backClicked" prefHeight="36.0" prefWidth="110.0" text="Back to menu">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <ImageView fx:id="charWinningScreen" fitHeight="150.0" fitWidth="200.0" layoutX="185.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="playAgainB" layoutX="137.0" layoutY="326.0" mnemonicParsing="false" onAction="#playAgainClicked" prefHeight="36.0" prefWidth="110.0" style=" -fx-background-image: url(/Images/blueButton.png) no-repeat;       -fx-background-color: transparent;       -fx-background-size: cover;       -fx-pref-height: 60px;       -fx-pref-width: 160px;       -fx-font-weight: bold;       -fx-text-fill: white;       -fx-font-size: 15;" text="Play again!" />
+      <Button fx:id="backB" layoutX="328.0" layoutY="326.0" mnemonicParsing="false" onAction="#backClicked" prefHeight="36.0" prefWidth="110.0" style=" -fx-background-image: url(/Images/blueButton.png) no-repeat;       -fx-background-color: transparent;       -fx-background-size: cover;       -fx-pref-height: 60px;       -fx-pref-width: 160px;       -fx-font-weight: bold;       -fx-text-fill: white;       -fx-font-size: 15;" text="Back to menu" />
    </children>
 </AnchorPane>

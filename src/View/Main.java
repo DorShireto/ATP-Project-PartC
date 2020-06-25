@@ -4,7 +4,7 @@ import Model.MazeCharacter;
 import Model.MyModel;
 import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.Maze;
-import com.sun.javafx.css.Stylesheet;
+//import com.sun.javafx.css.Stylesheet;
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sun.audio.AudioPlayer;
+//import sun.audio.AudioPlayer;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +44,9 @@ public class Main extends Application {
 
 
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 
 
@@ -53,7 +56,7 @@ public class Main extends Application {
         mainMenuStage = primaryStage;
         mainMenuStage.getIcons().add(new Image("/Images/gameIcon.png"));
         mainMenuStage.initStyle(StageStyle.DECORATED);
-        mainMenuStage.setResizable(true);
+        //mainMenuStage.setResizable(true);
         //in the end of this section, got to put login Scene as mainMenu set scene and show
 
         //Loading all FXMLs
@@ -73,7 +76,7 @@ public class Main extends Application {
         //Loading scenes
         gameScene = new Scene(gameFXML,800,600);
         aboutScene = new Scene(aboutFXML,800,600);
-        alertScene = new Scene(alertFXML,500,250);
+        alertScene = new Scene(alertFXML,700,350);
         helpScene = new Scene(helpFXML,800,600);
         loginScene = new Scene(loginFXML,800,600);
         optionsScene = new Scene(optionFXML,800,600);
@@ -90,11 +93,10 @@ public class Main extends Application {
         //model.runMyServer();
         viewModel = new MyViewModel(model);
         model.addObserver(viewModel);
-        //viewModel.addObserver(gameFxmlLoader.getController()); //TODO: Dor added, I think we need this? (still no change)
-        //start music TODO
-        //File musicPath = new File("Resources/Music/menusMusic.mp3");
-        //generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
-        //generalMusic.play();
+        //start music
+        File musicPath = new File("Resources/Music/menusMusic.mp3");
+        generalMusic = new MediaPlayer(new Media(musicPath.toURI().toString()));
+        generalMusic.play();
 
 
         mainMenuStage.setScene(loginScene);
@@ -103,20 +105,17 @@ public class Main extends Application {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
 
 
     public static void WinningView() {
-        //gameMusic.stop();TODO
+        gameMusic.stop();
         File winningSongFile = new File("Resources/Music/winningSong.mp3");
         winningMusic = new MediaPlayer(new Media(winningSongFile.toURI().toString()));
-        //winningMusic.play();TODO
+        winningMusic.play();
         WinningViewControl winningControl = winnerFxmlLoader.getController();
-        System.out.println("winningControl: "+winningControl);
-        winningControl.updateBackground();
+        winningStage.initStyle(StageStyle.UNDECORATED);
+        winningStage.setResizable(false);
         winningStage.show();
 
     }
@@ -125,8 +124,8 @@ public class Main extends Application {
 
     public static void backFromGame() {
         gameStage.hide();
-        //gameMusic.stop(); TODO
-        //generalMusic.play(); TODO
+        gameMusic.stop();
+        generalMusic.play();
         mainMenuStage.setScene(mainMenuScene);
         mainMenuStage.show();
 
@@ -155,73 +154,79 @@ public class Main extends Application {
 
 
 
-    public static void play() throws IOException {
+    public static void play()  {
 
-        //loading game stage and scene
-        gameStage = new Stage();
-        gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
-        gameStage.setScene(gameScene);
-
+        Main.loadGameStage();
 
         MyViewController myViewController = gameFxmlLoader.getController();
         myViewController.init(viewModel,gameScene,gameStage);
         viewModel.addObserver(myViewController);
+        myViewController.getSaveMaze().setDisable(true);
+        myViewController.getSolveMaze().setDisable(true);
 
-        //loading alert stage and scene
-       // alertStage.getIcons().add(new Image("/Images/gameIcon.png"));
-        alertStage = new Stage();
-        alertStage.setScene(alertScene);
-        alertStage.initModality(Modality.WINDOW_MODAL);
-
-        //loading winning stage and scene
-        //winningStage.getIcons().add(new Image("/Images/gameIcon.png"));
-        winningStage = new Stage();
-        winningStage.setScene(winningScene);
-        winningStage.initModality(Modality.WINDOW_MODAL);
-
-        //loading game music
-        File gameMusicFile = new File("Resources/Music/gameMusic.mp3");
-        gameMusic = new MediaPlayer(new Media(gameMusicFile.toURI().toString()));
-        mainMenuStage.hide();
-        gameStage.show();
-        //generalMusic.stop();
-        //gameMusic.play();
-
+        Main.loadAlertStage();
+        Main.loadWinningStage();
+        Main.loadMusic();
     }
 
-    public static void playAgain() throws IOException {
-    }
 
-    public static void load() throws IOException {
+
+    public static void load() {
         FileChooser fileChooser = new FileChooser();
         File saveFile = fileChooser.showOpenDialog(null);
-        saveFile.createNewFile(); // if file already exists will do nothing
-        viewModel.model.loadMaze(saveFile);
+        try {
+            saveFile.createNewFile();
+        } catch (Exception e) {
+            Main.showMainScreen();
+            return;
+        }
+        if(!viewModel.model.loadMaze(saveFile)) {
+            Main.showMainScreen();
+            return;
+        }
 
-        gameStage = new Stage();
-        gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
-        gameStage.setScene(gameScene);
+        Main.loadGameStage();
 
         MyViewController myViewController = gameFxmlLoader.getController();
         myViewController.init(viewModel,gameScene,gameStage);
         viewModel.addObserver(myViewController);
-        myViewController.load();
-        //TODO: DOR - CONTINUE FROM HERE
-        alertStage = new Stage();
-        alertStage.setScene(alertScene);
-        alertStage.initModality(Modality.WINDOW_MODAL);
+        myViewController.drawFirst();
 
-        //loading winning stage and scene
-        //winningStage.getIcons().add(new Image("/Images/gameIcon.png"));
-        winningStage = new Stage();
-        winningStage.setScene(winningScene);
-        winningStage.initModality(Modality.WINDOW_MODAL);
+        Main.loadAlertStage();
+        Main.loadWinningStage();
+        Main.loadMusic();
+    }
 
+    private static void loadMusic()  {
         //loading game music
         File gameMusicFile = new File("Resources/Music/gameMusic.mp3");
         gameMusic = new MediaPlayer(new Media(gameMusicFile.toURI().toString()));
         mainMenuStage.hide();
         gameStage.show();
+        generalMusic.stop();
+        gameMusic.play();
+    }
+
+    private static void loadWinningStage()  {
+        //loading winning stage and scene
+        //winningStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        winningStage = new Stage();
+        winningStage.setScene(winningScene);
+        //winningStage.initModality(Modality.WINDOW_MODAL);
+        winningStage.initModality(Modality.APPLICATION_MODAL);
+    }
+
+    private static void loadAlertStage()  {
+        alertStage = new Stage();
+        alertStage.setScene(alertScene);
+        alertStage.initModality(Modality.WINDOW_MODAL);
+
+    }
+
+    private static void loadGameStage()  {
+        gameStage = new Stage();
+        gameStage.getIcons().add(new Image("/Images/gameIcon.png"));
+        gameStage.setScene(gameScene);
 
     }
 
@@ -238,22 +243,24 @@ public class Main extends Application {
 
     }
     //alert handle
-    public static void showAlert() { alertStage.show();  }
+    public static void showAlert() {
+        alertStage.setResizable(false);
+        alertStage.show();
+    }
+
     public static void backFromAlert() {
         alertStage.hide();
         gameStage.show();
     }
 
     //about handle
-    public static void about() {
-        //AboutViewControl.aboutImage.setCache(true);
-        mainMenuStage.setScene(aboutScene);  }
+    public static void about() {  mainMenuStage.setScene(aboutScene);  }
     public static void backFromAbout() {  mainMenuStage.setScene(mainMenuScene);  }
 
     //Winning handle
     public static void backToMainMenu() {
-        //winningMusic.stop();
-        //generalMusic.play();
+        winningMusic.stop();
+        generalMusic.play();
         viewModel.model.initForMain();
         gameStage.close();
         winningStage.hide();
@@ -261,7 +268,7 @@ public class Main extends Application {
         mainMenuStage.setScene(mainMenuScene);
         mainMenuStage.show();
     }
-    public static void restartGame() throws IOException {
+    public static void restartGame()  {
         winningMusic.stop();
         winningStage.hide();
         gameStage.hide();

@@ -1,0 +1,72 @@
+.button {
+    -fx-background-image: url("/Images/stoneButton.png") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 160px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+
+    /* same as -fx-label-padding:20; */
+}
+
+.defaultButton {
+    -fx-background-image: url("/Images/redStone.png") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 160px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+
+    /* same as -fx-label-padding:20; */
+}
+
+
+
+.saveButton {
+    -fx-background-image: url("/Images/blueButton.png") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 160px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+
+    /* same as -fx-label-padding:20; */
+}
+
+
+.all{
+    -fx-background-image: url("/Images/settings.jpg") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+}
+.cb .menu-item:focused {
+    -fx-background-color: blue;
+}
+
+.cb .context-menu {
+    -fx-background-color: antiquewhite ;
+}
+
+.cb {
+    -fx-background-image: url("/Images/stoneButton.png") no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 160px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-text-align-last:  center;
+
+
+    -fx-font-size: 15;
+
+
+
+    -fx-mark-color: orange; // arrow color
+}

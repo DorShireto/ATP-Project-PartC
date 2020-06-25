@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutViewControl">
-   <children>
-      <Button fx:id="backB" layoutX="645.0" layoutY="519.0" mnemonicParsing="false" onAction="#backC" prefHeight="40.0" prefWidth="120.0" text="Back" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="271.0" layoutY="110.0" text="Official product by DTgames">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="140.0" text="Game developers are Dor S. and Tair S.">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="170.0" text="The Algorithm that been chose to develop and generate the mazes is Prim Algorithm">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="200.0" text="The Algorithm that been chose to solve the mazes are DFS, BFS, BestFS">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="aboutImage" cache="true" fitHeight="150.0" fitWidth="200.0" layoutX="300.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(/Images/AboutI.jpg);" />
-   </children>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/Images/about.png) ; -fx-background-size: cover;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutViewControl">
+   <Button fx:id="backB" layoutX="640.0" layoutY="519.0" mnemonicParsing="false" onAction="#backC" prefHeight="48.0" prefWidth="125.0" style="-fx-background-image: url(/Images/back.png) ; -fx-background-size: cover  ;    -fx-background-color: transparent;"/>
 </AnchorPane>

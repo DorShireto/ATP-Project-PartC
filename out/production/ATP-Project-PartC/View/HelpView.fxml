@@ -1,112 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="484.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.HelpViewControl">
+<AnchorPane prefHeight="484.0" prefWidth="800.0" style=" -fx-border-color: #51d4e8; -fx-background-image: url(Images/help.png);-fx-background-size: stretch;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.HelpViewControl">
    <children>
-      <ImageView fx:id="numPadP" fitHeight="326.0" fitWidth="304.0" layoutX="518.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(Images/NUMPAD.png);" />
-      <Text layoutX="32.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Possible moves:" underline="true" wrappingWidth="171.13671875">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="32.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You character will be able to move around the maze by " />
-      <Text layoutX="32.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pressing on different keys on your personal keyboards napad" />
-      <Text layoutX="32.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic movment:" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="32.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please notice! the character will move only if not " />
-      <Text layoutX="32.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="blocked by a wall in the movement direction" />
-      <Text layoutX="231.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagonal movment:" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Button fx:id="backB" layoutX="672.0" layoutY="420.0" mnemonicParsing="false" onAction="#backClieck" prefHeight="36.0" prefWidth="92.0" text="Back">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <GridPane layoutX="33.0" layoutY="265.0" prefHeight="117.0" prefWidth="199.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="39.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="160.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <ImageView fx:id="numPadP" fitHeight="345.0" fitWidth="542.0" layoutX="20.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(Images/helpInstructions.jpg);" />
+      <Text layoutX="32.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Player Possible moves:" underline="true" wrappingWidth="248.4296977519989" />
+      <Text layoutX="33.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="You'r character will be able to move around the maze by " />
+      <Text layoutX="32.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="pressing on different keys on your personal keyboard" />
+      <Text layoutX="32.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Basic movement:" underline="true" />
+      <Text layoutX="32.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Please notice! the character will move only if not " />
+      <Text layoutX="32.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="blocked by a wall in the movement direction" />
+      <Text layoutX="425.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Diagonal movment:" underline="true" />
+      <Button fx:id="backB" layoutX="683.0" layoutY="545.0" mnemonicParsing="false" onAction="#backClieck" prefHeight="36.0" prefWidth="92.0" style="-fx-background-image: url(/Images/back.png);    -fx-background-color: transparent;     -fx-background-size: cover;" />
+      <GridPane layoutX="33.0" layoutY="220.0" prefHeight="90.0" prefWidth="357.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Up">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD8 | W | Upper Arrow" GridPane.columnIndex="1" />
-            <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Down" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD2 | X | Lower Arrow" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD6 | D | Right Arrow" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD4 | A | Left Arrow" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Up" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD8 | W | Upper Arrow" GridPane.columnIndex="1" />
+            <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Down" GridPane.rowIndex="1" />
+            <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD2 | X | Lower Arrow" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Right" GridPane.rowIndex="2" />
+            <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD6 | D | Right Arrow" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text layoutX="10.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Left" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD4 | A | Left Arrow" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
-      </GridPane>
-      <GridPane layoutX="234.0" layoutY="264.0" prefHeight="117.0" prefWidth="235.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="86.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="158.0" />
+            <ColumnConstraints maxWidth="79.0" minWidth="65.0" prefWidth="79.0" />
+            <ColumnConstraints maxWidth="268.0" minWidth="254.0" prefWidth="254.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
          </rowConstraints>
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RIght &amp; Up" wrappingWidth="67.896484375">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD9 | E" GridPane.columnIndex="1" />
-            <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right &amp; Down" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD3 | C" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left &amp; Up" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD7 | Q " GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left &amp; Down" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUMPAD1 | Z" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-         </children>
       </GridPane>
+      <GridPane layoutX="425.0" layoutY="211.0" prefHeight="103.0" prefWidth="272.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="RIght &amp; Up" wrappingWidth="152.896484375" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD9 | E" GridPane.columnIndex="1" />
+            <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Right &amp; Down" GridPane.rowIndex="1" />
+            <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD3 | C" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Left &amp; Up" GridPane.rowIndex="2" />
+            <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD7 | Q " GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text layoutX="10.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Left &amp; Down" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="NUMPAD1 | Z" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints maxWidth="155.0" minWidth="147.0" prefWidth="155.0" />
+            <ColumnConstraints maxWidth="121.0" minWidth="113.0" prefWidth="113.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+      <Text layoutX="32.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tip: If you need an help to find the way to the thropy, Click on Solve button" wrappingWidth="646.0546896383166" />
+      <Text layoutX="32.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="For a closer look on your character, use CTRL + Mouse roller to Zoom in and out" wrappingWidth="646.0546970367432" />
    </children>
+   <stylesheets>
+      <URL value="@helpView.css" />
+   </stylesheets>
 </AnchorPane>

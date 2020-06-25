@@ -59,8 +59,7 @@ public class MyViewModel extends Observable implements Observer {
 
     public Maze getMaze() { return this.model.getMaze();  }
 
-    public Solution getSolution() { return this.solution; //TODO: returns null!
-        }
+    public Solution getSolution() { return this.solution;    }
 
     public void generate(int rows, int cols) { this.model.generateMaze(rows,cols);    }
 
@@ -85,7 +84,7 @@ public class MyViewModel extends Observable implements Observer {
                 imageString.setValue("/Images/LiShangI.png");
                 break;
             case " Chien Po ":
-                imageString.setValue("/Images/FattyI.jpg");
+                imageString.setValue("/Images/FattyI.png");
                 break;
         }
         Main.viewModel.model.setCharacter(name,imageString.getValue());

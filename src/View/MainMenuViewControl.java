@@ -14,13 +14,9 @@ public class MainMenuViewControl {
 
     @FXML
     private Label userName;
-    @FXML
-    private Button loadGameB,newGameB;
-
 
     public void setUser(String Name){
         this.userName.setText("Hello   "+Name);
-        System.out.println("name is: "+Name);
     }
 
 
@@ -45,11 +41,11 @@ public class MainMenuViewControl {
 
     }
 
-    public void newGameButtonClicked(ActionEvent actionEvent) throws IOException {
+    public void newGameButtonClicked(ActionEvent actionEvent){
         Main.play();
     }
 
-    public void loadGameButtonClicked(ActionEvent actionEvent) throws IOException {
+    public void loadGameButtonClicked(ActionEvent actionEvent){
         Main.load();
     }
 }

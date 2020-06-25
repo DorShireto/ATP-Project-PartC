@@ -44,7 +44,7 @@ public interface IModel {
 
     void saveOriginalMaze(File file, String name);
 
-    void loadMaze(File file);
+    boolean loadMaze(File file);
 
     MazeCharacter getLoadedCharacter();
 

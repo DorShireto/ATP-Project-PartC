@@ -6,6 +6,7 @@ import Server.Configurations;
 import Server.Server;
 import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
+import View.Main;
 import algorithms.mazeGenerators.*;
 import algorithms.search.*;
 import javafx.scene.control.Alert;
@@ -44,16 +45,6 @@ public class MyModel extends Observable implements IModel {
 
     @Override
     public void generateMaze(int row, int col) {
-        /**
-         * Dor: this section causes server to crush - trying to run a server that already runs
-         * */
-        //if (!isStartNewGame)
-        //    isStartNewGame = true;
-        //else {
-        //    serverMazeGenerator.stop();
-        //    serverMazeGenerator = new Server(5400, 1000, new ServerStrategyGenerateMaze());
-        //}
-        //serverMazeGenerator.start();
         if (isSolved) {
             serverSolveMaze.stop();
             serverSolveMaze = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
@@ -291,7 +282,7 @@ public class MyModel extends Observable implements IModel {
     }
 
 
-    public void loadMaze(File file) {
+    public boolean loadMaze(File file) {
         try {
             FileInputStream fin = new FileInputStream(file);
             ObjectInputStream oin = new ObjectInputStream(fin);
@@ -312,8 +303,10 @@ public class MyModel extends Observable implements IModel {
             alert.setGraphic(null);
             alert.setContentText("Loaded file was not a saved maze!\nPlease load the right type of file");
             alert.show();
-            e.printStackTrace();
+            Main.showMainScreen();
+            return false;
         }
+        return true;
     }
 
     private boolean isNotWall(int row, int col) {
