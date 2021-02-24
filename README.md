@@ -12,5 +12,15 @@ Enjoy!
 Dor Shireto.
 
 And here is a small preview
+![Game](https://user-images.githubusercontent.com/45013022/109022248-53692780-76c4-11eb-955c-593da1abfe43.png)
+![Main Menu](https://user-images.githubusercontent.com/45013022/109022260-55cb8180-76c4-11eb-9c3b-09a10ae9e1ee.png)
+
+https://user-images.githubusercontent.com/45013022/109022264-56fcae80-76c4-11eb-8a93-5bb3dd56ea8d.mp4
+
+![Settings](https://user-images.githubusercontent.com/45013022/109022334-64b23400-76c4-11eb-9bdb-14db075129fd.png)
+![Solve](https://user-images.githubusercontent.com/45013022/109022340-667bf780-76c4-11eb-9f9c-6744cada7745.png)
+![Welcome Screen](https://user-images.githubusercontent.com/45013022/109022348-67ad2480-76c4-11eb-8e32-01d7d799a075.JPG)
+![Winning](https://user-images.githubusercontent.com/45013022/109022350-6845bb00-76c4-11eb-89d4-ddd32751eb86.png)
+
 
 https://user-images.githubusercontent.com/45013022/109020699-de492280-76c2-11eb-8431-63e1fb0c2334.mp4
